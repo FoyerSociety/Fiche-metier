@@ -1,0 +1,22 @@
+{
+  "name": "fiche-metier",
+  "version": "1.0.0",
+  "description": "fiche",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FoyerSociety/Fiche-metier.git"
+  },
+  "keywords": [
+    "aina"
+  ],
+  "author": "fsociety",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FoyerSociety/Fiche-metier/issues"
+  },
+  "homepage": "https://github.com/FoyerSociety/Fiche-metier#readme"
+}
