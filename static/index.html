@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="dist/css/all.css">
     </head>
     <body>
-        <nav>
+        <nav id="sary">
             <span>
                 <img src="img/logo.png" alt="logo" id="img"> 
                 <div id="titre">
@@ -21,7 +21,8 @@
                 </div> 
             </span>
         </nav>
-        <div class="row align-items-center">
+        <br>
+        <div class="row align-items-center div-body">
             <div class="col">
                 <div id="colonne1">
                     <form>
@@ -32,7 +33,7 @@
                                     <i class="fas fa-user"></i>
                                 </span> 
                             </div>
-                            <input type="text" class="form-control" placeholder="Prénom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control enter" placeholder="Prénom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
 
                         <div class="input-group mb-3">
@@ -70,7 +71,7 @@
                             </div>
                             <div class="custom-file">
                               <input type="file" class="custom-file-input" id="inputGroupFile01">
-                              <label class="custom-file-label" for="inputGroupFile01">Choisir image</label>
+                              <label class="custom-file-label" for="inputGroupFile01">Choisir image (4x4)</label>
                             </div>
                           </div>
                     </form>
@@ -107,6 +108,17 @@
                     </form>
                 </div> 
             </div>
+        </div>
+
+        <div class="ending">
+            <div class="col align-self-end">
+                <button type="button" class="btn btn-success">
+                    <i class="fas fa-vote-yea"></i> Finir
+                </button>
+                <button type="button" class="btn btn-success">
+                    <i class="fas fa-power-off"></i> Quitter
+                </button>
+              </div>
         </div>
     </body>
 </html>

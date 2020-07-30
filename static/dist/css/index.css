@@ -12,24 +12,23 @@ h1{
 }
 
 #titre{
-    padding-top: 1px;
+    padding-top: 2px;
     background-color: transparent;
 }
 #colonne1{
     margin-left: 5px;
     float: left;
     width: 380px;
-    height: 360px;
+    height: 380px;
     background-color: #357a3569;
     border-radius: 12px;
+    padding-top: 5%;
     padding-left: 10px;
     padding-right: 10px;
 }
 #colonne2{
     width: 380px;
-    height: 360px;
-    margin-left: 2px;
-    margin-right: 5px;
+    height: 380px;
     background-color:#357a3569;
     border-radius: 12px;
     padding-left: 10px;
@@ -37,10 +36,9 @@ h1{
 
 }
 #colonne3{
-    margin-right: 5px;
-    float:right;
-    width: 380px;
-    height: 360px;
+    /* float:right; */
+    width: 360px;
+    height: 380px;
     background-color: #357a3569;
     border-radius: 12px;
     padding-left: 10px;
@@ -54,4 +52,15 @@ h2{
     border-radius: 5px;
     width: 300px;
     align-items: initial;
+}
+
+
+#sary{
+    margin-left: 5px;
+}
+
+.ending{
+    float: right;
+    /* margin-left: 900px; */
+    margin-top: 5%;
 }
