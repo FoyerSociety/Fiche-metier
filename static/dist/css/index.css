@@ -73,7 +73,7 @@ h2{
 .ending{
     float: right;
     /* margin-left: 900px; */
-    margin-top: 5%;
+    margin-top: 4%;
 }
 
 .apropos{
@@ -86,4 +86,8 @@ h2{
 .btn-col2{
     float: left;
     border-radius: 12px !important;
+}
+
+.contenu{
+    padding-top: 1%;
 }
