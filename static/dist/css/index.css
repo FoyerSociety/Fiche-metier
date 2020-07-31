@@ -19,7 +19,7 @@ h1{
     margin-left: 5px;
     float: left;
     width: 380px;
-    height: 380px;
+    height: 420px;
     background-color: #357a3569;
     border-radius: 12px;
     padding-top: 5%;
@@ -28,7 +28,7 @@ h1{
 }
 #colonne2{
     width: 380px;
-    height: 380px;
+    height: 420px;
     background-color:#357a3569;
     border-radius: 12px;
     padding-left: 10px;
@@ -36,9 +36,9 @@ h1{
 
 }
 #colonne3{
-    /* float:right; */
+    float:right;
     width: 360px;
-    height: 380px;
+    height: 420px;
     background-color: #357a3569;
     border-radius: 12px;
     padding-left: 10px;
@@ -63,4 +63,8 @@ h2{
     float: right;
     /* margin-left: 900px; */
     margin-top: 5%;
+}
+
+.apropos{
+    height: 100px !important;
 }

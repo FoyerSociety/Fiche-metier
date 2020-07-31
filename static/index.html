@@ -11,6 +11,9 @@
         <link rel="stylesheet" href="dist/js/bootstrap.min.js">
         <link rel="stylesheet" href="dist/js/bootstrap.js">
         <link rel="stylesheet" href="dist/css/all.css">
+        <link rel="stylesheet" href="dist/js/bootstrap.js">
+        <link rel="stylesheet" href="dist/js/bootstrap.min.js">
+        <script> window.jQuery =  window.$ = require('jquery'); </script>
     </head>
     <body>
         <nav id="sary">
@@ -57,23 +60,23 @@
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <i class="fas fa-comment-alt"></i>
-                                    </span> 
-                                </div>
-                                <textarea class="form-control" aria-label="With textarea" placeholder="A propos du professionnel"></textarea>
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupFileAddon01">
                                     <i class="fas fa-upload"></i>
                                 </span>
                                 </div>
                                 <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                <label class="custom-file-label" for="inputGroupFile01">Choisir image (4x4)</label>
+                                <input type="file" onchange=infoFile() class="custom-file-input" id="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01" >Choisir image (4x4)</label>
                                 </div>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-comment-alt"></i>
+                                    </span> 
+                                </div>
+                                <textarea class="form-control apropos" aria-label="With textarea" placeholder="A propos du professionnel"></textarea>
                             </div>
                         </form>
                     </div>   
@@ -122,5 +125,13 @@
                 </button>
               </div>
         </div>
+
+        <script>
+            function infoFile(){
+                var recupefile = document.getElementById('inputGroupFile01').files[0].name;
+                $('.custom-file-label').html(recupefile)
+
+            }
+        </script>
     </body>
 </html>

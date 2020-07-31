@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/FoyerSociety/Fiche-metier/issues"
   },
-  "homepage": "https://github.com/FoyerSociety/Fiche-metier#readme"
+  "homepage": "https://github.com/FoyerSociety/Fiche-metier#readme",
+  "dependencies": {
+    "electron-debug": "^3.1.0",
+    "jquery": "^3.5.1"
+  }
 }
