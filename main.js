@@ -9,10 +9,10 @@ const {app, BrowserWindow} = require('electron')
 function createWindow (win) {
 
   const mainWindow = new BrowserWindow({
-    width: 1200,
+    width: 1600,
     height: 620,
     center:true,
-    minWidth: 1200,
+    minWidth: 1250,
     minHeight: 620,
     webPreferences: {
 	  // manao integration ana nodejs anaty le projet

@@ -27,20 +27,21 @@
         <br>
         <div class="container-fluid">
             <div class="row align-items-center div-body">
+                <!-- Début de la colonne 1 -->
                 <div class="col">
                     <div id="colonne1">
                         <form>
                             <h2>Profil</h2>
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-4 enter">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="fas fa-user"></i>
                                     </span> 
                                 </div>
-                                <input type="text" class="form-control enter" placeholder="Prénom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Prénom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3 enter">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="fas fa-user"></i>
@@ -49,7 +50,7 @@
                                 <input type="text" class="form-control" placeholder="Nom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3 enter">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="fas fa-briefcase"></i>
@@ -58,7 +59,7 @@
                                 <input type="text" class="form-control" placeholder="Nom du métier" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3 enter">
                                 <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupFileAddon01">
                                     <i class="fas fa-upload"></i>
@@ -70,7 +71,7 @@
                                 </div>
                             </div>
 
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3 enter">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="fas fa-comment-alt"></i>
@@ -81,20 +82,93 @@
                         </form>
                     </div>   
                 </div>
+
+            <!-- Début de la colonne 2 -->
             <div class="col">
                 <div id="colonne2">
                     <form>
-                        <h2>Parcours</h2>
-                        <label for="prenom">Prénom</label>
-                        <input type="text" class="entrer" placeholder="Prénom du professionnel"><br><br>
-                        <label for="nom">Nom</label>
-                        <input type="text" class="entrer" placeholder="Nom professionnel">
+                        <h2>Études</h2>
+                            <div class="input-group mb-4 enter">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </span> 
+                                </div>
+                                <input type="text" class="form-control" placeholder="Bacc ..." aria-label="diplome" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3 enter">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </span> 
+                                </div>
+                                <input type="text" class="form-control" placeholder="Bacc + ..." aria-label="diplome" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3 enter">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </span> 
+                                </div>
+                                <input type="text" class="form-control" placeholder="Bacc + ..." aria-label="diplome" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3 enter">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </span> 
+                                </div>
+                                <input type="text" class="form-control" placeholder="Bacc + ..." aria-label="diplome" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <div class="input-group mb-3 enter">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-certificate"></i>
+                                    </span> 
+                                </div>
+                                <input type="text" class="form-control" placeholder="Autres ..." aria-label="diplome" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3 enter">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-secondary btn-col2">
+                                        <i class="fas fa-plus-circle"></i> Ajouter
+                                    </button>
+                                </div>
+                            </div>
+                            
                     </form>
         
                 </div> 
-                </div>
+            </div>
+
+            <!-- Début de la colonne 3  -->
+            <div class="col">
+                <div id="colonne3">
+                    <form>
+                        <h2>Critères</h2>
+                        <div class="input-group mb-3 enter">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fas fa-comment-alt"></i>
+                                </span> 
+                            </div>
+                            <textarea class="form-control acces" aria-label="With textarea" placeholder="Accès : "></textarea>
+                        </div>
+                    </form>
+        
+                </div> 
+            </div>
+
+
+            <!-- Début de la colonne 4  -->
+
                 <div class="col">
-                    <div id="colonne3">
+                    <div id="colonne4">
                         <form>
                             <h2>Études</h2>
                             <div class="input-group mb-3">
@@ -123,7 +197,7 @@
                 <button type="button" class="btn btn-success">
                     <i class="fas fa-power-off"></i> Quitter
                 </button>
-              </div>
+            </div>
         </div>
 
         <script>
