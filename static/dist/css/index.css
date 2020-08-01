@@ -51,6 +51,7 @@ h1{
     height: 420px;
     background-color:#357a3569;
     border-radius: 12px;
+    padding-top: 5%;
     padding-left: 10px;
     padding-right: 10px;
 
@@ -89,5 +90,5 @@ h2{
 }
 
 .contenu{
-    padding-top: 1%;
+    padding-top: 3%;
 }

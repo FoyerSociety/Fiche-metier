@@ -199,17 +199,34 @@
                         <form>
                             <h2>Études</h2>
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <i class="fas fa-user"></i>
-                                    </span> 
+                                <div class="input-group mb-3 enter">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">
+                                            <i class="fas fa-bookmark"></i>
+                                        </span> 
+                                    </div>
+                                    <textarea class="form-control apropos" aria-label="With textarea" placeholder="Formations : "></textarea>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+
+                                <div class="input-group mb-3 enter">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">
+                                            <i class="fas fa-briefcase"></i>
+                                        </span> 
+                                    </div>
+                                    <textarea class="form-control apropos" aria-label="With textarea" placeholder="Insertion professionnel : "></textarea>
+                                </div>
+
+                                <div class="input-group mb-3 enter">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">
+                                            <i class="fas fa-school"></i>
+                                        </span> 
+                                    </div>
+                                    <textarea class="form-control acces" aria-label="With textarea" placeholder="Etablissement Supérieurs : "></textarea>
+                                </div>
+        
                             </div>
-                            <label for="prenom">Prénom</label>
-                            <input type="text" class="entrer" placeholder="Prénom du professionnel"><br><br>
-                            <label for="nom">Nom</label>
-                            <input type="text" class="entrer" placeholder="Nom professionnel">
                         </form>
                     </div> 
                 </div>
@@ -219,10 +236,10 @@
         <div class="ending">
             <div class="col align-self-end">
                 <button type="button" class="btn btn-success">
-                    <i class="fas fa-vote-yea"></i> Finir
+                    <i class="fas fa-check"></i> Finir
                 </button>
-                <button type="button" class="btn btn-success">
-                    <i class="fas fa-power-off"></i> Quitter
+                <button type="quit" class="btn btn-success">
+                    <i class="fas fa-power-off" onclick="closW();"></i> Quitter
                 </button>
             </div>
         </div>
@@ -232,6 +249,9 @@
                 var recupefile = document.getElementById('inputGroupFile01').files[0].name;
                 $('.custom-file-label').html(recupefile)
 
+            }
+            function closW(){
+                window.close()
             }
         </script>
     </body>

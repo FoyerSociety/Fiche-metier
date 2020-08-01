@@ -26,6 +26,9 @@ function createWindow (win) {
   // mload an le fichier html de demarage
   mainWindow.loadURL('http://localhost:1456/index.html')
 
+  // plein écran
+  mainWindow.maximize()
+
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 }
