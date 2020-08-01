@@ -11,6 +11,9 @@
         <link rel="stylesheet" href="dist/js/bootstrap.min.js">
         <link rel="stylesheet" href="dist/js/bootstrap.js">
         <link rel="stylesheet" href="dist/css/all.css">
+        <link rel="stylesheet" href="dist/js/bootstrap.js">
+        <link rel="stylesheet" href="dist/js/bootstrap.min.js">
+        <script> window.jQuery =  window.$ = require('jquery'); </script>
     </head>
     <body>
         <nav id="sary">
@@ -22,22 +25,23 @@
             </span>
         </nav>
         <br>
-        <div class="container-fluid">
+        <div class="container-fluid contenu">
             <div class="row align-items-center div-body">
+                <!-- Début de la colonne 1 -->
                 <div class="col">
                     <div id="colonne1">
                         <form>
                             <h2>Profil</h2>
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-4 enter">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="fas fa-user"></i>
                                     </span> 
                                 </div>
-                                <input type="text" class="form-control enter" placeholder="Prénom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Prénom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3 enter">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="fas fa-user"></i>
@@ -46,7 +50,7 @@
                                 <input type="text" class="form-control" placeholder="Nom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3 enter">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="fas fa-briefcase"></i>
@@ -55,43 +59,143 @@
                                 <input type="text" class="form-control" placeholder="Nom du métier" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <i class="fas fa-comment-alt"></i>
-                                    </span> 
-                                </div>
-                                <textarea class="form-control" aria-label="With textarea" placeholder="A propos du professionnel"></textarea>
-                            </div>
-
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3 enter">
                                 <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupFileAddon01">
                                     <i class="fas fa-upload"></i>
                                 </span>
                                 </div>
                                 <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                <label class="custom-file-label" for="inputGroupFile01">Choisir image (4x4)</label>
+                                <input type="file" onchange=infoFile() class="custom-file-input" id="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01" >Choisir image (4x4)</label>
                                 </div>
+                            </div>
+
+                            <div class="input-group mb-3 enter">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-comment-alt"></i>
+                                    </span> 
+                                </div>
+                                <textarea class="form-control apropos" aria-label="With textarea" placeholder="A propos du professionnel"></textarea>
                             </div>
                         </form>
                     </div>   
                 </div>
+
+            <!-- Début de la colonne 2 -->
             <div class="col">
                 <div id="colonne2">
                     <form>
-                        <h2>Parcours</h2>
-                        <label for="prenom">Prénom</label>
-                        <input type="text" class="entrer" placeholder="Prénom du professionnel"><br><br>
-                        <label for="nom">Nom</label>
-                        <input type="text" class="entrer" placeholder="Nom professionnel">
+                        <h2>Études</h2>
+                            <div class="input-group mb-4 enter">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </span> 
+                                </div>
+                                <input type="text" class="form-control" placeholder="Bacc ..." aria-label="diplome" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3 enter">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </span> 
+                                </div>
+                                <input type="text" class="form-control" placeholder="Bacc + ..." aria-label="diplome" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3 enter">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </span> 
+                                </div>
+                                <input type="text" class="form-control" placeholder="Bacc + ..." aria-label="diplome" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3 enter">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </span> 
+                                </div>
+                                <input type="text" class="form-control" placeholder="Bacc + ..." aria-label="diplome" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <div class="input-group mb-3 enter">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-certificate"></i>
+                                    </span> 
+                                </div>
+                                <input type="text" class="form-control" placeholder="Autres ..." aria-label="diplome" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3 enter">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-secondary btn-col2">
+                                        <i class="fas fa-plus-circle"></i> Ajouter
+                                    </button>
+                                </div>
+                            </div>
+                            
                     </form>
         
                 </div> 
-                </div>
+            </div>
+
+            <!-- Début de la colonne 3  -->
+            <div class="col">
+                <div id="colonne3">
+                    <form>
+                        <h2>Critères</h2>
+                        <div class="input-group mb-3 enter">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fas fa-door-open"></i>
+                                </span> 
+                            </div>
+                            <textarea class="form-control acces" aria-label="With textarea" placeholder="Accès : "></textarea>
+                        </div>
+
+                        <div class="input-group mb-3 enter">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fas fa-brain"></i>
+                                </span> 
+                            </div>
+                            <textarea class="form-control acces" aria-label="With textarea" placeholder="Aspects positifs : "></textarea>
+                        </div>
+
+                        <div class="input-group mb-3 enter">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fas fa-angry"></i>
+                                </span> 
+                            </div>
+                            <textarea class="form-control acces" aria-label="With textarea" placeholder="Contraintes : "></textarea>
+                        </div>
+
+                        <div class="input-group mb-3 enter">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fas fa-book-reader"></i>
+                                </span> 
+                            </div>
+                            <textarea class="form-control apropos" aria-label="With textarea" placeholder="Compétences & Qualités : "></textarea>
+                        </div>
+                    </form>
+        
+                </div> 
+            </div>
+
+
+            <!-- Début de la colonne 4  -->
+
                 <div class="col">
-                    <div id="colonne3">
+                    <div id="colonne4">
                         <form>
                             <h2>Études</h2>
                             <div class="input-group mb-3">
@@ -120,7 +224,15 @@
                 <button type="button" class="btn btn-success">
                     <i class="fas fa-power-off"></i> Quitter
                 </button>
-              </div>
+            </div>
         </div>
+
+        <script>
+            function infoFile(){
+                var recupefile = document.getElementById('inputGroupFile01').files[0].name;
+                $('.custom-file-label').html(recupefile)
+
+            }
+        </script>
     </body>
 </html>

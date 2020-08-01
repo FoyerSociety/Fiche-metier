@@ -18,8 +18,8 @@ h1{
 #colonne1{
     margin-left: 5px;
     float: left;
-    width: 380px;
-    height: 380px;
+    width: 320px;
+    height: 420px;
     background-color: #357a3569;
     border-radius: 12px;
     padding-top: 5%;
@@ -27,31 +27,42 @@ h1{
     padding-right: 10px;
 }
 #colonne2{
-    width: 380px;
-    height: 380px;
+    width: 320px;
+    height: 420px;
+    background-color:#357a3569;
+    border-radius: 12px;
+    padding-top: 5%;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+#colonne3{
+    float:right;
+    width: 320px;
+    height: 420px;
+    background-color: #357a3569;
+    border-radius: 12px;
+    padding-top: 5%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#colonne4{
+    width: 320px;
+    height: 420px;
     background-color:#357a3569;
     border-radius: 12px;
     padding-left: 10px;
     padding-right: 10px;
 
 }
-#colonne3{
-    /* float:right; */
-    width: 360px;
-    height: 380px;
-    background-color: #357a3569;
-    border-radius: 12px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
 h2{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
-.entrer{
-    border-radius: 5px;
-    width: 300px;
-    align-items: initial;
+
+.enter{
+    width: 300px !important;
+    height: 10% !important;
 }
 
 
@@ -62,5 +73,21 @@ h2{
 .ending{
     float: right;
     /* margin-left: 900px; */
-    margin-top: 5%;
+    margin-top: 4%;
+}
+
+.apropos{
+    height: 100px !important;
+}
+.acces{
+    height: 50px !important;
+}
+
+.btn-col2{
+    float: left;
+    border-radius: 12px !important;
+}
+
+.contenu{
+    padding-top: 1%;
 }
