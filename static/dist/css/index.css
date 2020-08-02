@@ -74,7 +74,7 @@ h2{
 .ending{
     float: right;
     /* margin-left: 900px; */
-    margin-top: 4%;
+    margin-top: 5%;
 }
 
 .apropos{
@@ -91,4 +91,8 @@ h2{
 
 .contenu{
     padding-top: 3%;
+}
+
+.footerP{
+    margin-top: 5%;
 }
