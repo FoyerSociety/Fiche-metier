@@ -1,6 +1,6 @@
 
-// const debug = require('electron-debug')
-// debug()
+const debug = require('electron-debug')
+debug()
 
 // app le objet micontrol an le projet de BrosserWindow wan creation ana fenetre 
 const {app, BrowserWindow} = require('electron')
@@ -12,8 +12,8 @@ function createWindow (win) {
     width: 1600,
     height: 620,
     center:true,
-    minWidth: 1250,
-    minHeight: 620,
+    minWidth: 1200,
+    minHeight: 600,
     webPreferences: {
 	  // manao integration ana nodejs anaty le projet
       nodeIntegration: true
