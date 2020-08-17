@@ -11,7 +11,7 @@ const fs = require('fs')
 function createWindow (win_) {
 
 
-  const mainWindow = new BrowserWindow({
+  const win = new BrowserWindow({
     width: 1250,
     height: 620,
     center:true,
