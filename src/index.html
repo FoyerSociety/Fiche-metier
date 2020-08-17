@@ -40,7 +40,7 @@
                                         <i class="fas fa-user"></i>
                                     </span> 
                                 </div>
-                                <input type="text" class="form-control" placeholder="Prénom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
+                                <input id="prenom_pro" type="text" class="form-control" placeholder="Prénom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="input-group mb-3 enter">
@@ -49,7 +49,7 @@
                                         <i class="fas fa-user"></i>
                                     </span> 
                                 </div>
-                                <input type="text" class="form-control" placeholder="Nom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Nom du professionnel" id="nom_pro" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="input-group mb-3 enter">
@@ -58,7 +58,7 @@
                                         <i class="fas fa-briefcase"></i>
                                     </span> 
                                 </div>
-                                <input type="text" class="form-control" placeholder="Nom du métier" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" id="metier" class="form-control" placeholder="Nom du métier" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="input-group mb-3 enter">
@@ -79,7 +79,7 @@
                                         <i class="fas fa-comment-alt"></i>
                                     </span> 
                                 </div>
-                                <textarea class="form-control apropos" aria-label="With textarea" placeholder="A propos du professionnel"></textarea>
+                                <textarea id="bio" class="form-control apropos" aria-label="With textarea" placeholder="A propos du professionnel"></textarea>
                             </div>
                         </form>
                     </div>   
@@ -256,20 +256,8 @@
                 var recupefile = document.getElementById('inputGroupFile01').files[0].name;
                 $('.custom-file-label').html(recupefile)
 
-            }
-            // fermeture fênetre
-            function closeW(){
 
-                window.close()
-                
             }
-            function teste(){
-                console.log('aiza e');
-                window.location.assign('page.html');
-                console.log('aiiza iany e ');
-            }
-            
-            
         </script>
     </body>
 </html>
