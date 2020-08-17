@@ -13,7 +13,9 @@
         <link rel="stylesheet" href="dist/css/all.css">
         <link rel="stylesheet" href="dist/js/bootstrap.js">
         <link rel="stylesheet" href="dist/js/bootstrap.min.js">
+        
         <script> window.jQuery =  window.$ = require('jquery'); </script>
+        <script src='js/app.js'></script>
     </head>
     <body>
         <nav id="sary">
@@ -21,7 +23,7 @@
                 <img src="img/logo.png" alt="logo" id="img"> 
                 <div id="titre">
                     <h1>Formulaire</h1>
-                </div> 
+                </div>
             </span>
         </nav>
         <br>
@@ -30,7 +32,7 @@
                 <!-- Début de la colonne 1 -->
                 <div class="col">
                     <div id="colonne1">
-                        <form>
+                        <form id="profil" >
                             <h2>Profil</h2>
                             <div class="input-group mb-4 enter">
                                 <div class="input-group-prepend">
@@ -38,7 +40,7 @@
                                         <i class="fas fa-user"></i>
                                     </span> 
                                 </div>
-                                <input type="text" class="form-control" placeholder="Prénom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
+                                <input id="prenom_pro" type="text" class="form-control" placeholder="Prénom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="input-group mb-3 enter">
@@ -47,7 +49,7 @@
                                         <i class="fas fa-user"></i>
                                     </span> 
                                 </div>
-                                <input type="text" class="form-control" placeholder="Nom du professionnel" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Nom du professionnel" id="nom_pro" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="input-group mb-3 enter">
@@ -56,7 +58,7 @@
                                         <i class="fas fa-briefcase"></i>
                                     </span> 
                                 </div>
-                                <input type="text" class="form-control" placeholder="Nom du métier" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" id="metier" class="form-control" placeholder="Nom du métier" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="input-group mb-3 enter">
@@ -77,7 +79,7 @@
                                         <i class="fas fa-comment-alt"></i>
                                     </span> 
                                 </div>
-                                <textarea class="form-control apropos" aria-label="With textarea" placeholder="A propos du professionnel"></textarea>
+                                <textarea id="bio" class="form-control apropos" aria-label="With textarea" placeholder="A propos du professionnel"></textarea>
                             </div>
                         </form>
                     </div>   
@@ -236,8 +238,8 @@
 
         <div class="ending">
             <div class="col align-self-end">
-                <button type="button" class="btn btn-success">
-                    <i class="fas fa-check" onclick="teste()"></i> Finir
+                <button type="button" onclick="preview()" class="btn btn-success">
+                    <i class="fas fa-check" ></i> Finir
                 </button>
                 <button type="quit" class="btn btn-success" onclick="closeWin()">
                     <i class="fas fa-power-off"></i> Quitter
@@ -254,18 +256,8 @@
                 var recupefile = document.getElementById('inputGroupFile01').files[0].name;
                 $('.custom-file-label').html(recupefile)
 
-            }
-            // fermeture fênetre
-            function closeW(){
 
-                window.close()
-                
             }
-            function teste(){
-                alert("Ajout succès !")
-            }
-            
-            
         </script>
     </body>
 </html>
