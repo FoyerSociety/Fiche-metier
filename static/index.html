@@ -13,7 +13,9 @@
         <link rel="stylesheet" href="dist/css/all.css">
         <link rel="stylesheet" href="dist/js/bootstrap.js">
         <link rel="stylesheet" href="dist/js/bootstrap.min.js">
+        
         <script> window.jQuery =  window.$ = require('jquery'); </script>
+        <script src='js/app.js'></script>
     </head>
     <body>
         <nav id="sary">
@@ -21,7 +23,7 @@
                 <img src="img/logo.png" alt="logo" id="img"> 
                 <div id="titre">
                     <h1>Formulaire</h1>
-                </div> 
+                </div>
             </span>
         </nav>
         <br>
@@ -30,7 +32,7 @@
                 <!-- Début de la colonne 1 -->
                 <div class="col">
                     <div id="colonne1">
-                        <form>
+                        <form id="profil" >
                             <h2>Profil</h2>
                             <div class="input-group mb-4 enter">
                                 <div class="input-group-prepend">
@@ -236,8 +238,8 @@
 
         <div class="ending">
             <div class="col align-self-end">
-                <button type="button" class="btn btn-success">
-                    <i class="fas fa-check" onclick="teste()"></i> Finir
+                <button type="button" onclick="preview()" class="btn btn-success">
+                    <i class="fas fa-check" ></i> Finir
                 </button>
                 <button type="quit" class="btn btn-success" onclick="closeWin()">
                     <i class="fas fa-power-off"></i> Quitter
@@ -262,7 +264,9 @@
                 
             }
             function teste(){
-                alert("Ajout succès !")
+                console.log('aiza e');
+                window.location.assign('page.html');
+                console.log('aiiza iany e ');
             }
             
             
