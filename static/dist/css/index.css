@@ -103,11 +103,11 @@ h2{
 /* responsivité */
 @media screen and (max-width: 1250px){
     .enter{
-        width: 280px !important;
+        width: 250px !important;
         height: 9% !important;
     }
     #titre{
-        padding-top: 5% !important;
+        padding-top: 3% !important;
         color:  #ec394c!important;
         background-color: transparent;
     }
@@ -125,7 +125,7 @@ h2{
         background-color: #357a3569;
         border-radius: 12px;
         padding-top: 5%;
-        padding-right: 10px;
+        padding-left: 20px;
     }
     #colonne2{
         width: 290px;
@@ -134,17 +134,17 @@ h2{
         border-radius: 12px;
         padding-top: 5%;
         padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 20px;
     
     }
     #colonne3{
-        float:right;
+        float-left;
         width: 290px;
         height: 390px;
         background-color: #357a3569;
         border-radius: 12px;
         padding-top: 5%;
-        padding-right: 1% !important;
+        padding-left: 20px;
     }
     #colonne4{
         width: 290px;
@@ -153,54 +153,8 @@ h2{
         border-radius: 12px;
         padding-top: 5%;
         padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 20px;
     
     }
     
-}
-
-@media screen and (max-width: 1920px){
-    .enter{
-        width: 420px !important;
-        height: 9% !important;
-    }
-    #colonne1{
-        margin-left: 5px;
-        float: left;
-        width: 450px;
-        height: 400px;
-        background-color: #357a3569;
-        border-radius: 12px;
-        padding-top: 5%;
-        padding-right: 10px;
-    }
-    #colonne2{
-        width: 450px;
-        height:400px;
-        background-color:#357a3569;
-        border-radius: 12px;
-        padding-top: 5%;
-        padding-left: 10px;
-        padding-right: 10px;
-    
-    }
-    #colonne3{
-        float:right;
-        width: 450px;
-        height: 400px;
-        background-color: #357a3569;
-        border-radius: 12px;
-        padding-top: 5%;
-        padding-right: 1% !important;
-    }
-    #colonne4{
-        width: 450px;
-        height: 400px;
-        background-color:#357a3569;
-        border-radius: 12px;
-        padding-top: 5%;
-        padding-left: 10px;
-        padding-right: 10px;
-    
-    }
 }

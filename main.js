@@ -9,18 +9,18 @@ const {app, BrowserWindow} = require('electron')
 function createWindow (win) {
 
   const mainWindow = new BrowserWindow({
-    width: 1600,
+    width: 1250,
     height: 620,
     center:true,
-    minWidth: 1200,
-    minHeight: 600,
+    minWidth: 1250,
+    minHeight: 620,
     webPreferences: {
 	  // manao integration ana nodejs anaty le projet
       nodeIntegration: true
     }
   })
 
-  // tsy asina an le menu ambony reny longa mandrapa
+  // esorina aloha ilay menu ny fenêtre
   mainWindow.setMenu(null)
 
   // mload an le fichier html de demarage
