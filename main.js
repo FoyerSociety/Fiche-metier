@@ -5,20 +5,23 @@ const fs = require('fs')
 
 function createWindow (win_) {
 
+
   const win = new BrowserWindow({
-    width: 1600,
+    width: 1250,
     height: 620,
     center:true,
-    minWidth: 1200,
-    minHeight: 600,
+    minWidth: 1250,
+    minHeight: 620,
     webPreferences: {
 	  // manao integration ana nodejs anaty le projet
       nodeIntegration: true
     }
   })
 
+
   // tsy asina an le menu ambony reny longa mandrapa
   win.setMenu(null)
+
 
   // mload an le fichier html de demarage
   win.loadFile('src/index.html')
@@ -27,7 +30,7 @@ function createWindow (win_) {
   win.maximize()
 
   // Manokatra DevTools. 
-  win.webContents.openDevTools() 
+  // win.webContents.openDevTools() 
 
   // win.webContents.on('did-finish-load', () => {
   //   // Use default printing options

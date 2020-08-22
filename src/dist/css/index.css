@@ -19,7 +19,7 @@ h1{
     margin-left: 5px;
     float: left;
     width: 320px;
-    height: 420px;
+    height: 450px;
     background-color: #357a3569;
     border-radius: 12px;
     padding-top: 5%;
@@ -28,7 +28,7 @@ h1{
 }
 #colonne2{
     width: 320px;
-    height: 420px;
+    height: 450px;
     background-color:#357a3569;
     border-radius: 12px;
     padding-top: 5%;
@@ -39,7 +39,7 @@ h1{
 #colonne3{
     float:right;
     width: 320px;
-    height: 420px;
+    height: 450px;
     background-color: #357a3569;
     border-radius: 12px;
     padding-top: 5%;
@@ -48,7 +48,7 @@ h1{
 }
 #colonne4{
     width: 320px;
-    height: 420px;
+    height: 450px;
     background-color:#357a3569;
     border-radius: 12px;
     padding-top: 5%;
@@ -66,15 +66,30 @@ h2{
     height: 10% !important;
 }
 
+.entercol2A{
+    width: 15px !important;
+    height: 40px !important;
+}
+.entercol2B{
+    width: 80px !important;
+    height: 40px !important;
+}
+
 
 #sary{
     margin-left: 5px;
 }
 
+
+
 .ending{
     float: right;
     /* margin-left: 900px; */
     margin-top: 5%;
+}
+.ending2{
+    /* float: right; */
+    margin-left: 27%;
 }
 
 .apropos{
@@ -95,6 +110,7 @@ h2{
 
 .footerP{
     margin-top: 5%;
+    margin-left: 20px;
 }
 
 
@@ -103,11 +119,11 @@ h2{
 /* responsivité */
 @media screen and (max-width: 1250px){
     .enter{
-        width: 280px !important;
+        width: 250px !important;
         height: 9% !important;
     }
     #titre{
-        padding-top: 5% !important;
+        padding-top: 3% !important;
         color:  #ec394c!important;
         background-color: transparent;
     }
@@ -121,86 +137,45 @@ h2{
         margin-left: 5px;
         float: left;
         width: 290px;
-        height: 390px;
-        background-color: #357a3569;
-        border-radius: 12px;
-        padding-top: 5%;
-        padding-right: 10px;
-    }
-    #colonne2{
-        width: 290px;
-        height:390px;
-        background-color:#357a3569;
-        border-radius: 12px;
-        padding-top: 5%;
-        padding-left: 10px;
-        padding-right: 10px;
-    
-    }
-    #colonne3{
-        float:right;
-        width: 290px;
-        height: 390px;
-        background-color: #357a3569;
-        border-radius: 12px;
-        padding-top: 5%;
-        padding-right: 1% !important;
-    }
-    #colonne4{
-        width: 290px;
-        height: 390px;
-        background-color:#357a3569;
-        border-radius: 12px;
-        padding-top: 5%;
-        padding-left: 10px;
-        padding-right: 10px;
-    
-    }
-    
-}
-
-@media screen and (max-width: 1920px){
-    .enter{
-        width: 420px !important;
-        height: 9% !important;
-    }
-    #colonne1{
-        margin-left: 5px;
-        float: left;
-        width: 450px;
         height: 400px;
         background-color: #357a3569;
         border-radius: 12px;
         padding-top: 5%;
-        padding-right: 10px;
+        padding-left: 20px;
     }
     #colonne2{
-        width: 450px;
+        width: 290px;
         height:400px;
         background-color:#357a3569;
         border-radius: 12px;
         padding-top: 5%;
         padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 20px;
     
     }
     #colonne3{
-        float:right;
-        width: 450px;
+        float-left;
+        width: 290px;
         height: 400px;
         background-color: #357a3569;
         border-radius: 12px;
         padding-top: 5%;
-        padding-right: 1% !important;
+        padding-left: 20px;
     }
     #colonne4{
-        width: 450px;
+        width: 290px;
         height: 400px;
         background-color:#357a3569;
         border-radius: 12px;
         padding-top: 5%;
         padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 20px;
     
     }
+    .ending2{
+        /* float: right; */
+        margin-left: 12%;
+    }
+    
+    
 }
