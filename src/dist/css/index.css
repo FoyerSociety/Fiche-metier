@@ -19,7 +19,7 @@ h1{
     margin-left: 5px;
     float: left;
     width: 320px;
-    height: 420px;
+    height: 450px;
     background-color: #357a3569;
     border-radius: 12px;
     padding-top: 5%;
@@ -28,7 +28,7 @@ h1{
 }
 #colonne2{
     width: 320px;
-    height: 420px;
+    height: 450px;
     background-color:#357a3569;
     border-radius: 12px;
     padding-top: 5%;
@@ -39,7 +39,7 @@ h1{
 #colonne3{
     float:right;
     width: 320px;
-    height: 420px;
+    height: 450px;
     background-color: #357a3569;
     border-radius: 12px;
     padding-top: 5%;
@@ -48,7 +48,7 @@ h1{
 }
 #colonne4{
     width: 320px;
-    height: 420px;
+    height: 450px;
     background-color:#357a3569;
     border-radius: 12px;
     padding-top: 5%;
@@ -66,15 +66,30 @@ h2{
     height: 10% !important;
 }
 
+#entercol2A{
+    width: 15px !important;
+    height: 40px !important;
+}
+#entercol2B{
+    width: 70px !important;
+    height: 40px !important;
+}
+
 
 #sary{
     margin-left: 5px;
 }
 
+
+
 .ending{
     float: right;
     /* margin-left: 900px; */
     margin-top: 5%;
+}
+.ending2{
+    /* float: right; */
+    margin-left: 27%;
 }
 
 .apropos{
@@ -121,7 +136,7 @@ h2{
         margin-left: 5px;
         float: left;
         width: 290px;
-        height: 390px;
+        height: 400px;
         background-color: #357a3569;
         border-radius: 12px;
         padding-top: 5%;
@@ -129,7 +144,7 @@ h2{
     }
     #colonne2{
         width: 290px;
-        height:390px;
+        height:400px;
         background-color:#357a3569;
         border-radius: 12px;
         padding-top: 5%;
@@ -140,7 +155,7 @@ h2{
     #colonne3{
         float-left;
         width: 290px;
-        height: 390px;
+        height: 400px;
         background-color: #357a3569;
         border-radius: 12px;
         padding-top: 5%;
@@ -148,7 +163,7 @@ h2{
     }
     #colonne4{
         width: 290px;
-        height: 390px;
+        height: 400px;
         background-color:#357a3569;
         border-radius: 12px;
         padding-top: 5%;
@@ -156,5 +171,10 @@ h2{
         padding-left: 20px;
     
     }
+    .ending2{
+        /* float: right; */
+        margin-left: 12%;
+    }
+    
     
 }
