@@ -30,7 +30,7 @@ function createWindow (win_) {
   win.maximize()
 
   // Manokatra DevTools. 
-  // win.webContents.openDevTools() 
+  win.webContents.openDevTools() 
 
   // win.webContents.on('did-finish-load', () => {
   //   // Use default printing options

@@ -13,17 +13,22 @@ ipcRenderer.on('asynchronous-reply', (event, arg) => {
 
 
 function preview(){
+	// RECUPERATION DES DONNEES D INPUT
     var profil = $('#profil');
 	    var anarana = profil.find('#nom_pro').val().toUpperCase() + ' ' + profil.find('#prenom_pro').val();
 	    var asa = profil.find('#metier').val();
 	    var bio = profil.find('#bio').val();
-	    var _pro_image = document.getElementById('inputGroupFile01').files[0];
-			let src = path.join(_pro_image.path);
+	    var pro_image_ = document.getElementById('inputGroupFile01').files[0];
+	    	console.log(pro_image_);
+			let src = path.join(pro_image_.path);
 			let destDir = path.join(__dirname, 'data');
 			verifDir(destDir);
-			var pro_image =copyFile(src, path.join(destDir, `${Date.now()}_${_pro_image.name}`));
+			var pro_image = copyFile(src, path.join(destDir, `${Date.now()}_${pro_image_.name}`));
 
-	var parcours = $('#parcours');
+	var parcours = []
+	$(".hideDiv:visible").each(function(){
+		parcours.push([$(this).find('input.entercol2A').val(), $(this).find('input.entercol2B').val()]);
+	});
 
 	var metier = $('#metier');
 		var access = metier.find('#access_metier').val();
