@@ -88,7 +88,7 @@
             <!-- Début de la colonne 2 -->
             <div class="col">
                 <div id="colonne2">
-                    <form>
+                    <form id='parcours'>
                         <h2>Parcours</h2>
                             <div class="input-group mb-4 enter">
                                 <div class="input-group-prepend">
@@ -141,9 +141,7 @@
                                         <i class="fas fa-plus-circle"></i> Ajouter
                                     </button>
                                 </div>
-                            </div>
-                            
-                            
+                            </div>                           
                     </form>
         
                 </div> 
@@ -152,7 +150,7 @@
             <!-- Début de la colonne 3  -->
             <div class="col">
                 <div id="colonne3">
-                    <form>
+                    <form id="metier">
                         <h2>Le métier</h2>
                         <div class="input-group mb-3 enter">
                             <div class="input-group-prepend">
@@ -160,7 +158,7 @@
                                     <i class="fas fa-door-open"></i>
                                 </span> 
                             </div>
-                            <textarea class="form-control acces" aria-label="With textarea" placeholder="Accès : "></textarea>
+                            <textarea id="access_metier" class="form-control acces" aria-label="With textarea" placeholder="Accès : "></textarea>
                         </div>
 
                         <div class="input-group mb-3 enter">
@@ -169,7 +167,7 @@
                                     <i class="fas fa-brain"></i>
                                 </span> 
                             </div>
-                            <textarea class="form-control acces" aria-label="With textarea" placeholder="Aspects positifs : "></textarea>
+                            <textarea id="aspect_positif" class="form-control acces" aria-label="With textarea" placeholder="Aspects positifs : "></textarea>
                         </div>
 
                         <div class="input-group mb-3 enter">
@@ -178,7 +176,7 @@
                                     <i class="fas fa-angry"></i>
                                 </span> 
                             </div>
-                            <textarea class="form-control acces" aria-label="With textarea" placeholder="Contraintes : "></textarea>
+                            <textarea id="contrainte" class="form-control acces" aria-label="With textarea" placeholder="Contraintes : "></textarea>
                         </div>
 
                         <div class="input-group mb-3 enter">
@@ -187,7 +185,7 @@
                                     <i class="fas fa-book-reader"></i>
                                 </span> 
                             </div>
-                            <textarea class="form-control apropos" aria-label="With textarea" placeholder="Compétences & Qualités : "></textarea>
+                            <textarea id="comptence" class="form-control apropos" aria-label="With textarea" placeholder="Compétences & Qualités : "></textarea>
                         </div>
                     </form>
         
@@ -199,7 +197,7 @@
 
                 <div class="col">
                     <div id="colonne4">
-                        <form>
+                        <form id='etudes'>
                             <h2>Études</h2>
                             <div class="input-group mb-3">
                                 <div class="input-group mb-3 enter">
@@ -208,7 +206,7 @@
                                             <i class="fas fa-bookmark"></i>
                                         </span> 
                                     </div>
-                                    <textarea class="form-control apropos" aria-label="With textarea" placeholder="Formations : "></textarea>
+                                    <textarea id="formation" class="form-control apropos" aria-label="With textarea" placeholder="Formations : "></textarea>
                                 </div>
 
                                 <div class="input-group mb-3 enter">
@@ -217,7 +215,7 @@
                                             <i class="fas fa-briefcase"></i>
                                         </span> 
                                     </div>
-                                    <textarea class="form-control apropos" aria-label="With textarea" placeholder="Insertion professionnel : "></textarea>
+                                    <textarea id="insertPro" class="form-control apropos" aria-label="With textarea" placeholder="Insertion professionnel : "></textarea>
                                 </div>
 
                                 <div class="input-group mb-3 enter">
@@ -226,7 +224,7 @@
                                             <i class="fas fa-school"></i>
                                         </span> 
                                     </div>
-                                    <textarea class="form-control acces" aria-label="With textarea" placeholder="Etablissement Supérieurs : "></textarea>
+                                    <textarea id="es" class="form-control acces" aria-label="With textarea" placeholder="Etablissement Supérieurs : "></textarea>
                                 </div>
         
                             </div>
@@ -253,10 +251,8 @@
 
         <script>
             function infoFile(){
-                var recupefile = document.getElementById('inputGroupFile01').files[0].name;
-                $('.custom-file-label').html(recupefile)
-
-
+                var pro_image = document.getElementById('inputGroupFile01').files[0];
+                $('.custom-file-label').html(pro_image.name)
             }
         </script>
     </body>

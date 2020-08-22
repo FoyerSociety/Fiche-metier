@@ -1,12 +1,7 @@
-
-// const debug = require('electron-debug')
-// debug()
-
 // app le objet micontrol an le projet de BrosserWindow wan creation ana fenetre 
 const {app, BrowserWindow} = require('electron')
 const {ipcMain} = require('electron')
 const fs = require('fs')
-
 
 function createWindow (win_) {
 
