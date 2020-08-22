@@ -66,12 +66,12 @@ h2{
     height: 10% !important;
 }
 
-#entercol2A{
+.entercol2A{
     width: 15px !important;
     height: 40px !important;
 }
-#entercol2B{
-    width: 70px !important;
+.entercol2B{
+    width: 80px !important;
     height: 40px !important;
 }
 
