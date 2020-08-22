@@ -16,7 +16,7 @@ h1{
     background-color: transparent;
 }
 #colonne1{
-    margin-left: 5px;
+    margin-left: 4px;
     float: left;
     width: 320px;
     height: 450px;
@@ -27,6 +27,7 @@ h1{
     padding-right: 10px;
 }
 #colonne2{
+    margin-right: 10px;
     width: 320px;
     height: 450px;
     background-color:#357a3569;
@@ -47,6 +48,7 @@ h1{
     padding-right: 10px;
 }
 #colonne4{
+    margin-left: -12px;
     width: 320px;
     height: 450px;
     background-color:#357a3569;
@@ -123,7 +125,7 @@ h2{
         height: 9% !important;
     }
     #titre{
-        padding-top: 2% !important;
+        padding-top: 1% !important;
         color:  #ec394c!important;
         background-color: transparent;
     }
@@ -137,18 +139,18 @@ h2{
         margin-left: 5px;
         float: left;
         width: 290px;
-        height: 400px;
+        height: 420px;
         background-color: #357a3569;
         border-radius: 12px;
-        padding-top: 3%;
+        padding-top: 2%;
         padding-left: 20px;
     }
     #colonne2{
         width: 290px;
-        height:400px;
+        height:420px;
         background-color:#357a3569;
         border-radius: 12px;
-        padding-top: 3%;
+        padding-top: 2%;
         padding-left: 10px;
         padding-left: 20px;
     
@@ -156,18 +158,18 @@ h2{
     #colonne3{
         float-left;
         width: 290px;
-        height: 400px;
+        height: 420px;
         background-color: #357a3569;
         border-radius: 12px;
-        padding-top: 3%;
+        padding-top: 2%;
         padding-left: 20px;
     }
     #colonne4{
         width: 290px;
-        height: 400px;
+        height: 420px;
         background-color:#357a3569;
         border-radius: 12px;
-        padding-top: 3%;
+        padding-top: 2%;
         padding-left: 10px;
         padding-left: 20px;
     
@@ -186,4 +188,9 @@ h2{
         /* margin-left: 900px; */
         margin-top: 2%;
     }
+    .contenu{
+        padding-top: 1%;
+    }
+
+   
 }
