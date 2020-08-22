@@ -27,6 +27,7 @@ h1{
     padding-right: 10px;
 }
 #colonne2{
+    margin-right: 10px;
     width: 320px;
     height: 450px;
     background-color:#357a3569;
@@ -47,6 +48,7 @@ h1{
     padding-right: 10px;
 }
 #colonne4{
+    margin-left: -5px;
     width: 320px;
     height: 450px;
     background-color:#357a3569;
