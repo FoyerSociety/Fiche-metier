@@ -1,15 +1,15 @@
 
-var cacher = $(".hideDiv").hide();
+$(".hideDiv").hide();
+$(".hideDiv:first").show();
 
 function showDiv() {
   var i = 0;
-   $(".hideDiv:hidden").each(function(){
-       if (i==0){
-        $(this).show();
-       }
-       i++;
-       
-   });
+  $(".hideDiv:hidden").each(function(){
+  if (i==0){
+    $(this).show();
+  }
+  i++;
+  });
 };
 
 function removeDiv() {
@@ -21,5 +21,5 @@ function removeDiv() {
         }
         i++;
     });
-     
+    $(".hideDiv:first").show();
 };
