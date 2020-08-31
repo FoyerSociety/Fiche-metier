@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head lang="fr">
-        <title> Sesame | Fiche metier</title>
+        <title> Fiche metier</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="dist/css/index.css">
         <link href="img/logo.png" rel="icon">
         <link href="img/logo.png" rel="apple-touch-icon">
-        <link rel="stylesheet" href="dist/css/bootstrap.css">
         <link rel="stylesheet" href="dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="dist/js/bootstrap.min.js">
-        <link rel="stylesheet" href="dist/js/bootstrap.js">
         <link rel="stylesheet" href="dist/css/all.css">
-        <link rel="stylesheet" href="dist/js/bootstrap.js">
-        <link rel="stylesheet" href="dist/js/bootstrap.min.js">
        
         
         <script> window.jQuery =  window.$ = require('jquery'); </script>
-        <script src='js/app.js'></script>
     
     </head>
     <body>
@@ -164,7 +159,7 @@
             <!-- Début de la colonne 3  -->
             <div class="col">
                 <div id="colonne3">
-                    <form id="metier">
+                    <form id="_metier">
                         <h2>Le métier</h2>
                         <div class="input-group mb-3 enter">
                             <div class="input-group-prepend">
@@ -229,7 +224,7 @@
                                             <i class="fas fa-briefcase"></i>
                                         </span> 
                                     </div>
-                                    <textarea id="insertPro" class="form-control apropos" aria-label="With textarea" placeholder="Insertion professionnel : "></textarea>
+                                    <textarea id="_insertPro" class="form-control apropos" aria-label="With textarea" placeholder="Insertion professionnel : "></textarea>
                                 </div>
 
                                 <div class="input-group mb-3 enter ">
@@ -253,7 +248,7 @@
                 <button type="button" onclick="preview()" class="btn btn-success">
                     <i class="fas fa-check" ></i> Finir
                 </button>
-                <button type="quit" class="btn btn-success" onclick="closeWin()">
+                <button type="quit" class="btn btn-success" onclick="">
                     <i class="fas fa-power-off"></i> Quitter
                 </button>
             </div>
@@ -270,5 +265,6 @@
             }
         </script>
         <script  src="js/index.js"> </script>
+        <script src='js/_get.js'></script>
     </body>
 </html>
