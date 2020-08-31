@@ -19,10 +19,13 @@ function preview(){
 	    var asa = profil.find('#metier').val();
 	    var bio = profil.find('#bio').val();
 	    var pro_image_ = document.getElementById('inputGroupFile01').files[0];
+	    // fix bug path not found when image not selected
+	    if (pro_image_){
 			let src = path.join(pro_image_.path);
 			let destDir = path.join(__dirname, 'data');
 			verifDir(destDir);
 			var pro_image = copyFile(src, path.join(destDir, `${Date.now()}_${pro_image_.name}`));
+		}
 
 	var parcours = []
 	$(".hideDiv:visible").each(function(){
