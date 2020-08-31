@@ -1,10 +1,9 @@
-// app le objet micontrol an le projet de BrosserWindow wan creation ana fenetre 
-const {app, BrowserWindow} = require('electron')
-const {ipcMain} = require('electron')
+const {app, BrowserWindow, Menu, ipcMain, dialog} = require('electron')
 const fs = require('fs')
+var fiche_metier = null
+var winP;
 
 function createWindow (win_) {
-
 
   const win = new BrowserWindow({
     width: 1250,
@@ -12,15 +11,64 @@ function createWindow (win_) {
     center:true,
     minWidth: 1250,
     minHeight: 620,
+    show: false,
     webPreferences: {
 	  // manao integration ana nodejs anaty le projet
       nodeIntegration: true
     }
   })
+  
+  // efa pare vao avoaka 
+  win.once('ready-to-show', ()=>{ win.show() })
 
+  const menu = Menu.buildFromTemplate(
+    [
+      {
+        label: "Fichier",
+        submenu: [
+          {
+            label: "Ouvrir",
+            click: function(){
+              let file_open = dialog.showOpenDialog(win, {
+                filters: [ { name : 'Fiche Metier', extensions: ['fms'] } ],
+                properties: ['openFile'],
+                message: "Charger un fiche metier"
+              }) 
 
-  // tsy asina an le menu ambony reny longa mandrapa
-  win.setMenu(null)
+              file_open.then(result => {
+                  if (result.filePaths.length>0){
+                    fs.readFile(result.filePaths[0], (err, data)=>{
+                      if (err) throw err;
+                      let textdata = data.toString('utf8')
+                      fiche_metier = JSON.stringify(eval("(" + textdata + ")"));
+                      test();
+                    });
+                   
+                  }
+              })
+            }
+          },
+          {
+            label: "Nouveau",
+            click: ()=>{
+              fiche_metier = null
+              win.loadFile('src/index.html')
+            }
+          },
+          {
+            label: "Nouvelle Fenetre",
+            click: ()=>{ createWindow() }
+          },
+          {
+            label: "Fermer",
+            click: ()=>{ app.quit() }
+          },
+        ]
+      }
+    ]
+  );
+
+  Menu.setApplicationMenu(menu);
 
 
   // mload an le fichier html de demarage
@@ -30,7 +78,7 @@ function createWindow (win_) {
   win.maximize()
 
   // Manokatra DevTools. 
-  // win.webContents.openDevTools() 
+  win.webContents.openDevTools() 
 
   // win.webContents.on('did-finish-load', () => {
   //   // Use default printing options
@@ -43,54 +91,51 @@ function createWindow (win_) {
   //     console.log(error)
   //   })
   // })
+
+  winP = win;
  
 }
 
 
 // Appel tsy miandry retour fa mandef ref vita
 ipcMain.on('asynchronous-message', (event, arg) => {
-  console.log(" tonga oo " + arg)
+  if (arg['status'] == 'set'){
+    fiche_metier = arg['data']
+  }
+  else if (arg['status'] == 'toPdf'){
+    printPdf();  
+  }
 
   // mandefa valiny amjay
-  event.sender.send('asynchronous-reply', 'async pong valiny o')
+  //event.sender.send('asynchronous-reply', 'async pong valiny o')
 })
 
 // Message Miandry retour , tsy mitohy ra tsy vita
 ipcMain.on('synchronous-message', (event, arg) => {
-  console.log(arg) // prints "ping"
-  event.returnValue = 'pong'
+  if (arg['status'] == 'get'){
+    event.returnValue = fiche_metier
+  }
+  
+  event.returnValue = null
+  
 })
 
 
-function Professionnel(nom="", prenom="", image=""){
-  this.nom = Nom.toUpperCase();
-  this.prenom = prenom;
-  this.image = image;
-}
-
-
-function Metier(acces, positifs, contraintes, comptences){
-  this.acces = acces
-  this.positifs = positifs
-  this.contraintes = contraintes
-  this.comptences = comptences
-}
-
-
-function Etudes(formations, insert_pro, es){
-  this.formations = formations
-  this.insert_pro = insert_pro
-  this.es = es
-}
-
-
-function FicheMetier(titre, professionnel=new Professionnel(), parcours, metier, etudes){
-  this.titre = titre;
-  this.professionnel= professionnel;
-  this.parcours = parcours
-  this.metier = metier
-  this.etudes = etudes
-}
-
-
 app.on('ready', createWindow)
+
+
+function test(){
+  console.log(fiche_metier);
+}
+
+
+function printPdf(){
+  winP.webContents.printToPDF({}).then(data => {
+  fs.writeFile('print.pdf', data, (error) => {
+    if (error) throw error
+        console.log('Write PDF successfully.')
+    })
+  }).catch(error => {
+      console.log(error)
+  })
+}

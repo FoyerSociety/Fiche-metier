@@ -13,28 +13,65 @@ ipcRenderer.on('asynchronous-reply', (event, arg) => {
 
 
 function preview(){
+	// RECUPERATION DES DONNEES D INPUT
     var profil = $('#profil');
 	    var anarana = profil.find('#nom_pro').val().toUpperCase() + ' ' + profil.find('#prenom_pro').val();
 	    var asa = profil.find('#metier').val();
 	    var bio = profil.find('#bio').val();
-	    var _pro_image = document.getElementById('inputGroupFile01').files[0];
-			let src = path.join(_pro_image.path);
+	    var pro_image_ = document.getElementById('inputGroupFile01').files[0];
+	    // fix bug path not found when image not selected
+	    if (pro_image_){
+			let src = path.join(pro_image_.path);
 			let destDir = path.join(__dirname, 'data');
 			verifDir(destDir);
-			var pro_image =copyFile(src, path.join(destDir, `${Date.now()}_${_pro_image.name}`));
+			var pro_image = copyFile(src, path.join(destDir, `${Date.now()}_${pro_image_.name}`));
+		}
 
-	var parcours = $('#parcours');
+	var parcours = []
+	$(".hideDiv:visible").each(function(){
+		parcours.push([$(this).find('input.entercol2A').val(), $(this).find('input.entercol2B').val()]);
+	});
 
-	var metier = $('#metier');
+	var metier = $('#_metier');
 		var access = metier.find('#access_metier').val();
 		var aspPositif = metier.find('#aspect_positif').val();
 		var contrainte = metier.find('#contrainte').val();
-		var comptence = metier.find('#comptence').val();
+		var competence = metier.find('#comptence').val();
 
 	var etudes = $('#etudes');
-		var formation = etudes.find('#formation');
-		var insertionPro = etudes.find('#insertPro');
-		var es = etudes.find('#es');
+		var formation = etudes.find('#formation').val();
+		var insertionPro = etudes.find('#_insertPro').val();
+		var es = etudes.find('#es').val();
+
+
+	var fiche_metier = {
+		'profil' : {
+			'nom' : anarana,
+			'poste' : asa,
+			'biographie' : bio,
+			'profilImage' : pro_image, 
+		},
+
+		'parcours' : parcours,
+
+		'etudes' : {
+			'formation' : formation,
+			'insertionProfessionnel' : insertionPro,
+			'etablissement' : es
+		},
+
+		'metier' : {
+			'accessMetier' : access,
+			'aspectPositif' : aspPositif,
+			'contrainte' : contrainte ,
+			'competenceQualite' : competence,
+			'domaine' : ''
+		}
+	}
+
+	ipcRenderer.send('asynchronous-message', {'status':'save', 'data':fiche_metier});
+	window.location.assign('page.html')
+	
 }
 
 
@@ -64,3 +101,5 @@ function verifDir(destDir){
     	fs.mkdirSync(destDir);
 	});
 }
+
+
