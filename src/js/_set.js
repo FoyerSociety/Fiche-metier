@@ -1,12 +1,6 @@
 const {ipcRenderer} = require('electron')
 
 
-
-function _setInput(dataJson){
-	
-}
-
-
 function _setOutput(dataJson) {
 
 }

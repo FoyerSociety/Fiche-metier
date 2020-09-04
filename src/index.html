@@ -248,8 +248,8 @@
                 <button type="button" onclick="preview()" class="btn btn-success">
                     <i class="fas fa-check" ></i> Finir
                 </button>
-                <button type="quit" class="btn btn-success" onclick="">
-                    <i class="fas fa-power-off"></i> Quitter
+                <button type="quit" class="btn btn-success" onclick="saveData()">
+                    <i class="fas fa-power-off"></i> Enregistrer
                 </button>
             </div>
         </div>
@@ -261,7 +261,7 @@
         <script>
             function infoFile(){
                 var pro_image = document.getElementById('inputGroupFile01').files[0];
-                $('.custom-file-label').html(pro_image.name)
+                $('.custom-file-label').html(pro_image.name.substring(0,20))
             }
         </script>
         <script  src="js/index.js"> </script>

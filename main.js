@@ -1,7 +1,10 @@
 const {app, BrowserWindow, Menu, ipcMain, dialog} = require('electron')
 const fs = require('fs')
+const path = require('path');
+var AdmZip = require('adm-zip');
 var fiche_metier = null
 var winP;
+
 
 function createWindow (win_) {
 
@@ -42,6 +45,7 @@ function createWindow (win_) {
                       let textdata = data.toString('utf8')
                       fiche_metier = JSON.stringify(eval("(" + textdata + ")"));
                       test();
+                      win.loadFile('src/index.html')
                     });
                    
                   }
@@ -78,22 +82,9 @@ function createWindow (win_) {
   win.maximize()
 
   // Manokatra DevTools. 
-  win.webContents.openDevTools() 
-
-  // win.webContents.on('did-finish-load', () => {
-  //   // Use default printing options
-  //   win.webContents.printToPDF({}).then(data => {
-  //     fs.writeFile('/tmp/print.pdf', data, (error) => {
-  //       if (error) throw error
-  //       console.log('Write PDF successfully.')
-  //     })
-  //   }).catch(error => {
-  //     console.log(error)
-  //   })
-  // })
+  //win.webContents.openDevTools() 
 
   winP = win;
- 
 }
 
 
@@ -105,10 +96,11 @@ ipcMain.on('asynchronous-message', (event, arg) => {
   else if (arg['status'] == 'toPdf'){
     printPdf();  
   }
-
-  // mandefa valiny amjay
-  //event.sender.send('asynchronous-reply', 'async pong valiny o')
+  else if (arg['status'] == 'save'){
+    saveData();
+  }
 })
+
 
 // Message Miandry retour , tsy mitohy ra tsy vita
 ipcMain.on('synchronous-message', (event, arg) => {
@@ -124,11 +116,6 @@ ipcMain.on('synchronous-message', (event, arg) => {
 app.on('ready', createWindow)
 
 
-function test(){
-  console.log(fiche_metier);
-}
-
-
 function printPdf(){
   winP.webContents.printToPDF({}).then(data => {
   fs.writeFile('print.pdf', data, (error) => {
@@ -138,4 +125,37 @@ function printPdf(){
   }).catch(error => {
       console.log(error)
   })
+}
+
+
+function saveData(){
+
+    let save_file = dialog.showSaveDialog(winP, {
+      filters: [ { name : 'Fiche Metier', extensions: ['fms'] } ],
+      properties: ['openFile', 'promptToCreate', 'createDirectory'],
+      message: "Enregistrer Fiche Metier"
+    })
+
+    save_file.then(result => {
+      if (!result.canceled){
+        extens = result.filePath.split('.').reverse()[0]
+        if (extens!='fms') result.filePath += ".fms";
+
+        // ATAOVY AKATO AMJAY LESY E!
+        var zip = new AdmZip();
+
+        var image = fiche_metier['profil']['profilImage']
+        let imageName = image.split('/').reverse()[0]
+        let jsonName = image.split('/').reverse()[0].split('.')[0] + '.json'
+        fiche_metier['profil']['profilImage'] = imageName
+
+        content = JSON.stringify(fiche_metier)
+        zip.addFile(jsonName, Buffer.alloc(content.length, content), "fmsJson");
+        zip.addLocalFile(image);
+
+        zip.writeZip(result.filePath)
+
+      }
+        
+    });
 }
