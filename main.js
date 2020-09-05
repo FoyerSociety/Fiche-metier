@@ -8,12 +8,14 @@ var winP;
 function createWindow (win_) {
 
   const win = new BrowserWindow({
-    width: 1250,
-    height: 620,
+    width: 1366,
+    height: 768,
     center:true,
-    minWidth: 1250,
-    minHeight: 620,
+    minWidth: 1366,
+    minHeight: 768,
     show: false,
+    maxWidth: 1366,
+    maxHeight: 768,
     webPreferences: {
 	  // manao integration ana nodejs anaty le projet
       nodeIntegration: true
