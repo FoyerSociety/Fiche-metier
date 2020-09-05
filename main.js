@@ -80,7 +80,7 @@ function createWindow (win_) {
   win.maximize()
 
   // Manokatra DevTools. 
-  win.webContents.openDevTools() 
+  // win.webContents.openDevTools() 
 
   winP = win;
 }

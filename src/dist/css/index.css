@@ -130,7 +130,10 @@ h2{
     height: 40px;
     border-radius: 12px;
     padding-left: 2%;
-    
+
+}
+.choix:hover{
+    cursor: pointer;
 }
 
 
