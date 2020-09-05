@@ -7,8 +7,10 @@
         <link href="img/logo.png" rel="icon">
         <link href="img/logo.png" rel="apple-touch-icon">
         <link rel="stylesheet" href="dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="dist/js/bootstrap.min.js">
         <link rel="stylesheet" href="dist/css/all.css">
+        <script src="dist/js/bootstrap.min.js"></script>
+        <script src="dist/js/jquery.min.js"></script>
+        <script src="dist/js/popper.js"></script>
        
         
         <script> window.jQuery =  window.$ = require('jquery'); </script>
@@ -196,6 +198,7 @@
                             </div>
                             <textarea id="comptence" class="form-control apropos" aria-label="With textarea" placeholder="Compétences & Qualités : "></textarea>
                         </div>
+                        
                     </form>
         
                 </div> 
@@ -249,7 +252,7 @@
                     <i class="fas fa-check" ></i> Finir
                 </button>
                 <button type="quit" class="btn btn-success" onclick="saveData()">
-                    <i class="fas fa-power-off"></i> Enregistrer
+                    <i class="fas fa-save"></i> Enregistrer
                 </button>
             </div>
         </div>
@@ -263,6 +266,9 @@
                 var pro_image = document.getElementById('inputGroupFile01').files[0];
                 $('.custom-file-label').html(pro_image.name.substring(0,20))
             }
+
+            
+
         </script>
         <script  src="js/index.js"> </script>
         <script src='js/_get.js'></script>
