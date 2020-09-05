@@ -25,7 +25,7 @@ function preview(dataOnly=false){
 			let destDir = path.join(__dirname, 'data');
 			verifDir(destDir);
 			var pro_image = copyFile(src, path.join(destDir, `${pro_image_.name}`));
-		} else { var pro_image = null }
+		} else { var pro_image = '' }
 
 	var parcours = []
 	$(".hideDiv:visible").each(function(){
@@ -104,39 +104,37 @@ function verifDir(destDir){
 
 
 function _setInput(dataJson){
-	alert("charger le fichier")
-	/*
 	// RECUPERATION DES DONNEES D INPUT
     var profil = $('#profil');
-    var aba
-	    profil.find('#nom_pro').val()
-	    profil.find('#prenom_pro').val();
-	    var asa = profil.find('#metier').val();
-	    var bio = profil.find('#bio').val();
-	    var pro_image_ = document.getElementById('inputGroupFile01').files[0];
-	    // fix bug path not found when image not selected
-	    if (pro_image_){
-			let src = path.join(pro_image_.path);
-			let destDir = path.join(__dirname, 'data');
-			verifDir(destDir);
-			var pro_image = copyFile(src, path.join(destDir, `${Date.now()}_${pro_image_.name}`));
-		} else { var pro_image = "" }
+    	let anarana = dataJson['profil']['nom'].split(' ')
+	    profil.find('#nom_pro').val(anarana[0])
+	    let prenom = anarana.reverse()
+	    prenom.pop()
+	    prenom = prenom.reverse()
+	    profil.find('#prenom_pro').val(prenom.join(' '));
+	    var asa = profil.find('#metier').val(dataJson['profil']['poste']);
+	    var bio = profil.find('#bio').val(dataJson['profil']['biographie']);
+	    //var pro_image_ = document.getElementById('inputGroupFile01').files[0];
 
-	var parcours = []
-	$(".hideDiv:visible").each(function(){
-		parcours.push([$(this).find('input.entercol2A').val(), $(this).find('input.entercol2B').val()]);
-	});
+	var parcours = dataJson['parcours']
+	let divParcours = $(".hideDiv")
+	for (let i=0;i<parcours.length;i++){
+		let divP = $(divParcours[i]);
+		divP.show()
+		divP.find('input.entercol2A').val(parcours[i][0])
+		divP.find('input.entercol2B').val(parcours[i][1])
+	}
 
 	var metier = $('#_metier');
-		var access = metier.find('#access_metier').val();
-		var aspPositif = metier.find('#aspect_positif').val();
-		var contrainte = metier.find('#contrainte').val();
-		var competence = metier.find('#comptence').val();
+		var access = metier.find('#access_metier').val(dataJson['metier']['accessMetier']);
+		var aspPositif = metier.find('#aspect_positif').val(dataJson['metier']['aspectPositif']);
+		var contrainte = metier.find('#contrainte').val(dataJson['metier']['contrainte']);
+		var competence = metier.find('#comptence').val(dataJson['metier']['competenceQualite']);
 
 	var etudes = $('#etudes');
-		var formation = etudes.find('#formation').val();
-		var insertionPro = etudes.find('#_insertPro').val();
-		var es = etudes.find('#es').val();*/
+		var formation = etudes.find('#formation').val(dataJson['etudes']['formation']);
+		var insertionPro = etudes.find('#_insertPro').val(dataJson['etudes']['insertionProfessionnel']);
+		var es = etudes.find('#es').val(dataJson['etudes']['etablissement']);
 }
 
 
