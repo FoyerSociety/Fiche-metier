@@ -1,8 +1,6 @@
 const {app, BrowserWindow, Menu, ipcMain, dialog} = require('electron')
 const fs = require('fs')
 const path = require('path')
-// var AdmZip = require('adm-zip')
-// var archiver = require('archiver');
 var fiche_metier = null
 var winP;
 

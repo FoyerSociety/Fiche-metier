@@ -23,11 +23,6 @@
   },
   "homepage": "https://github.com/FoyerSociety/Fiche-metier#readme",
   "dependencies": {
-<<<<<<< HEAD
-    "archiver": "^5.0.0",
-=======
-    "adm-zip": "^0.4.16",
->>>>>>> 4b8b8f2aafda4275a6d99f0aff1a09f29e0f290f
     "jquery": "^3.5.1"
   }
 }
