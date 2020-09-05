@@ -28,7 +28,6 @@ function preview(dataOnly=false){
 		} 
 		else {
 			label_file = $('.custom-file-label').val()
-			alert(label_file)
 			if (label_file!=''){
 				pro_image = label_file
 			}
