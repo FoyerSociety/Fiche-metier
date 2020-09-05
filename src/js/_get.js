@@ -82,7 +82,9 @@ function preview(dataOnly=false){
 
 	if (!dataOnly) window.location.assign('page.html')
 	
-	ipcRenderer.send('asynchronous-message', {'status':'set', 'data':fiche_metier});	
+	ipcRenderer.send('asynchronous-message', {'status':'set', 'data':fiche_metier});
+
+	return fiche_metier;
 }
 
 

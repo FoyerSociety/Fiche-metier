@@ -13,6 +13,8 @@ function createWindow (win_) {
     center:true,
     minWidth: 1250,
     minHeight: 620,
+    minWidth: 1250,
+    minHeight: 620,
     show: false,
     webPreferences: {
 	  // manao integration ana nodejs anaty le projet
@@ -54,7 +56,7 @@ function createWindow (win_) {
             label: "Nouveau",
             click: ()=>{
               fiche_metier = null
-              win.loadFile('src/index.html')
+              win.loadURL(`http://localhost:${process.env.fmsPORT}/index.html`)
             }
           },
           {
@@ -74,7 +76,7 @@ function createWindow (win_) {
 
 
   // mload an le fichier html de demarage
-  win.loadFile('src/index.html')
+  win.loadURL(`http://localhost:${process.env.fmsPORT}/index.html`)
 
   // plein écran
   win.maximize()
