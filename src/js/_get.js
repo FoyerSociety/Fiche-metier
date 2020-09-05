@@ -25,7 +25,18 @@ function preview(dataOnly=false){
 			let destDir = path.join(__dirname, 'data');
 			verifDir(destDir);
 			var pro_image = copyFile(src, path.join(destDir, `${pro_image_.name}`));
-		} else { var pro_image = '' }
+		} 
+		else {
+			label_file = $('.custom-file-label').val()
+			alert(label_file)
+			if (label_file!=''){
+				pro_image = label_file
+			}
+			else{
+				var pro_image = ''
+			}
+			
+		}
 
 	var parcours = []
 	$(".hideDiv:visible").each(function(){
@@ -114,7 +125,8 @@ function _setInput(dataJson){
 	    profil.find('#prenom_pro').val(prenom.join(' '));
 	    var asa = profil.find('#metier').val(dataJson['profil']['poste']);
 	    var bio = profil.find('#bio').val(dataJson['profil']['biographie']);
-	    //var pro_image_ = document.getElementById('inputGroupFile01').files[0];
+	    $('.custom-file-label').val(dataJson['profil']['profilImage'])
+	    $('.custom-file-label').html(dataJson['profil']['profilImage'])
 
 	var parcours = dataJson['parcours']
 	let divParcours = $(".hideDiv")
