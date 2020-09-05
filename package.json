@@ -24,6 +24,7 @@
   "homepage": "https://github.com/FoyerSociety/Fiche-metier#readme",
   "dependencies": {
     "electron": "^10.1.1",
+    "electron-pdf-window": "^1.0.12",
     "jquery": "^3.5.1"
   }
 }

@@ -1,4 +1,5 @@
 const {app, BrowserWindow, Menu, ipcMain, dialog} = require('electron')
+const PDFWindow = require('electron-pdf-window')
 const fs = require('fs')
 const path = require('path')
 var fiche_metier = null
@@ -45,7 +46,7 @@ function createWindow (win_) {
                       if (err) throw err;
                       let textdata = data.toString('utf8')
                       fiche_metier = JSON.parse(JSON.stringify(eval("(" + textdata + ")")));
-                      win.loadFile('src/index.html')
+                      win.loadURL(`http://localhost:${process.env.fmsPORT}/index.html`)
                     });
                    
                   }
@@ -99,6 +100,7 @@ ipcMain.on('asynchronous-message', (event, arg) => {
   else if (arg['status'] == 'save'){
     saveData();
   }
+  else if (arg['status'] == 'viewPdf') viewPdf(arg['data']);
 })
 
 
@@ -185,4 +187,15 @@ function saveData(){
       }
         
     });
+}
+
+
+function viewPdf(url){
+  const win = new PDFWindow({
+    width: 800,
+    height: 600
+  })
+
+  win.loadFile(url)
+
 }

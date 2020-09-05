@@ -1,17 +1,39 @@
 import os, sys, eel
+from docxtpl import DocxTemplate
+from docx2pdf import convert
 
 
 PORT, OLDPORT = 1333, 0
-options = {
-	'mode': 'custom',
-	'args': ['node_modules/electron/dist/electron.exe', '.']
-}
 eel.init('src')
 
 
 @eel.expose
-def hello(word):
-	print(word)
+def generate(data):
+	doc = DocxTemplate("Trame-vierge.docx")
+
+	context = {
+		'nom' : data['profil']['nom'],
+		'poste' : data['profil']['poste'],
+		'biographie' : data['profil']['biographie'],
+
+		'competenceQualite' : data['metier']['competenceQualite'],
+		'accessMetier' : data['metier']['accessMetier'],
+		'aspectPositif' : data['metier']['aspectPositif'],
+		'contrainte' : data['metier']['contrainte'],
+
+		'formation' : data['etudes']['formation'],
+		'etablissement' : data['etudes']['etablissement'],
+		'insertionProfessionnel' : data['etudes']['insertionProfessionnel'],
+	}
+
+	doc.render(context)
+	doc.save("generated_doc.docx")
+	convert("generated_doc.docx")
+
+	return 'generated_doc.pdf'
+
+
+
 
 
 def main():
@@ -20,12 +42,10 @@ def main():
 		PORT += 1
 	OLDPORT = PORT 
 	os.environ['fmsPORT'] = str(PORT)
-	options['port'] = PORT
-	eel.start(mode='custom', cmdline_args=['node_modules/electron/dist/electron.exe', '.'], port=PORT)
+	if sys.platform == 'linux': eel.start(mode="electron", port=PORT)
+	else: eel.start(mode='custom', cmdline_args=['node_modules/electron/dist/electron.exe', '.'], port=PORT)
 
 
 if __name__ == '__main__':
-	if sys.platform == 'linux':
-		eel.start(mode="electron", port=PORT)
-	else: main()
+	main()
 

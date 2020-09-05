@@ -79,11 +79,12 @@ function preview(dataOnly=false){
 		}
 	}
 
-	if (!dataOnly) window.location.assign('page.html')
+	if (!dataOnly) {
+		eel.generate(fiche_metier)(viewPdf)
+	}
 	
 	ipcRenderer.send('asynchronous-message', {'status':'set', 'data':fiche_metier});
 
-	return fiche_metier;
 }
 
 
@@ -158,6 +159,13 @@ $(function() {
 
 
 function saveData(){
-	preview(true);
+	let data = preview(true);
 	ipcRenderer.sendSync('asynchronous-message', {'status':'save'})
+}
+
+
+
+function viewPdf(data){
+	alert('aty oo')
+	ipcRenderer.sendSync('asynchronous-message', {'status':'viewPdf', 'data': data})
 }
