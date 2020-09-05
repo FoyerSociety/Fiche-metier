@@ -1,7 +1,6 @@
 const {app, BrowserWindow, Menu, ipcMain, dialog} = require('electron')
 const fs = require('fs')
-const path = require('path');
-var AdmZip = require('adm-zip');
+const path = require('path')
 var fiche_metier = null
 var winP;
 
@@ -43,8 +42,7 @@ function createWindow (win_) {
                     fs.readFile(result.filePaths[0], (err, data)=>{
                       if (err) throw err;
                       let textdata = data.toString('utf8')
-                      fiche_metier = JSON.stringify(eval("(" + textdata + ")"));
-                      test();
+                      fiche_metier = JSON.parse(JSON.stringify(eval("(" + textdata + ")")));
                       win.loadFile('src/index.html')
                     });
                    
@@ -82,7 +80,7 @@ function createWindow (win_) {
   win.maximize()
 
   // Manokatra DevTools. 
-  //win.webContents.openDevTools() 
+  win.webContents.openDevTools() 
 
   winP = win;
 }
@@ -139,21 +137,48 @@ function saveData(){
     save_file.then(result => {
       if (!result.canceled){
         extens = result.filePath.split('.').reverse()[0]
-        if (extens!='fms') result.filePath += ".fms";
+        if (extens!='fms') result.filePath += ".fms";var output = fs.createWriteStream(result.filePath);
+
+        // var archive = archiver('zip', {
+        //   zlib: { level: 9 } 
+        // });
+
+        // archive.pipe(output);
+
+        // // Ampidirina anaty zip lesy le fichier
+        // archive.append(fs.createReadStream(image), { name: imageName});
+        // archive.append(JSON.stringify(fiche_metier), { name: jsonName });
+
+        // // farano amjay lesy e 
+        // archive.finalize();
 
         // ATAOVY AKATO AMJAY LESY E!
-        var zip = new AdmZip();
 
         var image = fiche_metier['profil']['profilImage']
-        let imageName = image.split('/').reverse()[0]
-        let jsonName = image.split('/').reverse()[0].split('.')[0] + '.json'
-        fiche_metier['profil']['profilImage'] = imageName
+        console.log('-->' + image + '<--')
+        if (image!=''){
+          let imageName = image.split('/').reverse()[0]
+          //let jsonName = image.split('/').reverse()[0].split('.')[0] + '.json'
+          fiche_metier['profil']['profilImage'] = imageName
+        }
 
-        content = JSON.stringify(fiche_metier)
-        zip.addFile(jsonName, Buffer.alloc(content.length, content), "fmsJson");
-        zip.addLocalFile(image);
+        fs.writeFile(result.filePath, JSON.stringify(fiche_metier), function(err){
+          if (err) throw err;
+        })
+        // var output = fs.createWriteStream(result.filePath);
 
-        zip.writeZip(result.filePath)
+        // var archive = archiver('zip', {
+        //   zlib: { level: 9 } 
+        // });
+
+        // archive.pipe(output);
+
+        // // Ampidirina anaty zip lesy le fichier
+        // archive.append(fs.createReadStream(image), { name: imageName});
+        // archive.append(JSON.stringify(fiche_metier), { name: jsonName });
+
+        // // farano amjay lesy e 
+        // archive.finalize();
 
       }
         
