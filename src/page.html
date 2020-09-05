@@ -10,11 +10,20 @@
         <link rel="stylesheet" href="dist/js/bootstrap.min.js">
         <link rel="stylesheet" href="dist/css/all.css">
         <style>
-            html, body {
-                /* A4 format */ 
-                height:297mm; 
-                width:210mm;
+            @page {
+
+                size: A4;
+                margin: 0;
+                padding-top: 10%;
             }
+            @media print {
+
+               html, body {
+                   background-color: red; 
+               }
+
+            }
+
         </style>
         <script> window.jQuery =  window.$ = require('jquery'); </script>
         <script src='js/_set.js'></script>
