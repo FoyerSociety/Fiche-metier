@@ -68,6 +68,29 @@ function createWindow (win_) {
             click: ()=>{ app.quit() }
           },
         ]
+      },
+      {
+        label : "A propos",
+        submenu :[
+          {
+            label : "Logiciel",
+            click : ()=>{
+              let apropos = dialog.showMessageBox(win, {
+                title : "A propos du logiciel",
+                message : "Nom du logiciel : FICHE METIER \n\nDescription :\n\nCe logiciel a été conçu pour créer un fiche métier . Et il facilite et uniformise la mise en forme de votre fiche métier."
+              })
+            }
+          },
+          {
+            label : "Devéloppeurs",
+            click : ()=>{
+              let devps = dialog.showMessageBox(win, {
+                title : "Les développeurs",
+                message : "F_Society : \n\nAina Juno P18 : Front-end \nGaetan Jonathan P18 : Back-end \nBruollin P18 : Contributeur "
+              })
+            }
+          }
+        ]
       }
     ]
   );
