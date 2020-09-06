@@ -3,6 +3,45 @@ const fs = require('fs');
 const path = require('path');
 
 
+
+
+$(".hideDiv").hide();
+fixParcours();
+
+function showDiv() {
+  var i = 0;
+  $(".hideDiv:hidden").each(function(){
+  if (i==0){
+    $(this).show();
+  }
+  i++;
+  });
+};
+
+function removeDiv() {
+    var i = 1;
+    var elInput = $(".hideDiv:visible");
+    elInput.each(function(){
+        if ((i)==elInput.length){
+            $(this).hide();
+        }
+        i++;
+    });
+    $(".hideDiv:first").show();
+};
+
+
+function fixParcours(){
+  var i = 0;
+  $(".hideDiv:hidden").each(function(){
+    if (i<3) $(this).show();
+    i++;
+  });
+}
+
+
+
+
 // ipcRenderer.sendSync('synchronous-message', 'sync ping')
 // ipcRenderer.send('asynchronous-message', 'async ping')
 
@@ -14,6 +53,7 @@ ipcRenderer.on('asynchronous-reply', (event, arg) => {
 
 function preview(dataOnly=false){
 	// RECUPERATION DES DONNEES D INPUT
+	if (!dataOnly) $('.butAiza').text('...');
     var profil = $('#profil');
 	    var anarana = profil.find('#nom_pro').val().toUpperCase() + ' ' + profil.find('#prenom_pro').val();
 	    var asa = profil.find('#metier').val();
@@ -87,36 +127,8 @@ function preview(dataOnly=false){
 		eel.generate(fiche_metier)(viewPdf)
 	}
 	
-	ipcRenderer.send('asynchronous-message', {'status':'set', 'data':fiche_metier});
+	ipcRenderer.send('synchronous-message', {'status':'set', 'data':fiche_metier});
 
-}
-
-
-function copyFile(src, dest) {
-
-  let readStream = fs.createReadStream(src);
-
-  readStream.once('error', (err) => {
-    console.log(err);
-  });
-
-  readStream.once('end', () => {
-    console.log('done copying');
-  });
-
-  readStream.pipe(fs.createWriteStream(dest));
-
-  return dest;
-}
-
-
-function verifDir(destDir){
-	// Fonction miverifier hoe mi existe ny dossier raika
-	// creer le izy ra tsy miexiste mokn ai
-	fs.access(destDir, (err) => {
-  	if(err)
-    	fs.mkdirSync(destDir);
-	});
 }
 
 
@@ -164,10 +176,14 @@ $(function() {
 
 function saveData(){
 	preview(true);
-	ipcRenderer.sendSync('asynchronous-message', {'status':'save'})
+	ipcRenderer.sendSync('synchronous-message', {'status':'save'})
 }
 
 
 function viewPdf(data){
-	ipcRenderer.sendSync('asynchronous-message', {'status':'viewPdf', 'data': data})
+	if (data) ipcRenderer.sendSync('synchronous-message', {'status':'viewPdf', 'data': data});
+	$('.butAiza').text('Finir')
 }
+
+
+

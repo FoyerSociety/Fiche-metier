@@ -1,5 +1,4 @@
 const {app, BrowserWindow, Menu, ipcMain, dialog} = require('electron')
-const PDFWindow = require('electron-pdf-window')
 const fs = require('fs')
 const path = require('path')
 var fiche_metier = null
@@ -83,7 +82,7 @@ function createWindow (win_) {
   win.maximize()
 
   // Manokatra DevTools. 
-  win.webContents.openDevTools() 
+  //win.webContents.openDevTools() 
 
   winP = win;
 }
@@ -91,24 +90,18 @@ function createWindow (win_) {
 
 // Appel tsy miandry retour fa mandef ref vita
 ipcMain.on('asynchronous-message', (event, arg) => {
-  if (arg['status'] == 'set'){
-    fiche_metier = arg['data']
-  }
-  else if (arg['status'] == 'toPdf'){
-    printPdf();  
-  }
-  else if (arg['status'] == 'save'){
-    saveData();
-  }
-  else if (arg['status'] == 'viewPdf') viewPdf(arg['data']);
+  // nalako aby jiaby fa mampirekitra processus
+  //nalefako amn sync any aby 
 })
 
 
 // Message Miandry retour , tsy mitohy ra tsy vita
 ipcMain.on('synchronous-message', (event, arg) => {
-  if (arg['status'] == 'get'){
-    event.returnValue = fiche_metier
-  }
+
+  if (arg['status'] == 'get') event.returnValue = fiche_metier;
+  else if (arg['status'] == 'viewPdf') viewPdf(arg['data']);
+  else if (arg['status'] == 'save') saveData();
+  else if (arg['status'] == 'set') fiche_metier = arg['data'];
   
   event.returnValue = null
   
@@ -116,18 +109,6 @@ ipcMain.on('synchronous-message', (event, arg) => {
 
 
 app.on('ready', createWindow)
-
-
-function printPdf(){
-  winP.webContents.printToPDF({}).then(data => {
-  fs.writeFile('print.pdf', data, (error) => {
-    if (error) throw error
-        console.log('Write PDF successfully.')
-    })
-  }).catch(error => {
-      console.log(error)
-  })
-}
 
 
 function saveData(){
@@ -143,59 +124,24 @@ function saveData(){
         extens = result.filePath.split('.').reverse()[0]
         if (extens!='fms') result.filePath += ".fms";var output = fs.createWriteStream(result.filePath);
 
-        // var archive = archiver('zip', {
-        //   zlib: { level: 9 } 
-        // });
-
-        // archive.pipe(output);
-
-        // // Ampidirina anaty zip lesy le fichier
-        // archive.append(fs.createReadStream(image), { name: imageName});
-        // archive.append(JSON.stringify(fiche_metier), { name: jsonName });
-
-        // // farano amjay lesy e 
-        // archive.finalize();
-
         // ATAOVY AKATO AMJAY LESY E!
 
         var image = fiche_metier['profil']['profilImage']
-        console.log('-->' + image + '<--')
         if (image!=''){
           let imageName = image.split('/').reverse()[0]
-          //let jsonName = image.split('/').reverse()[0].split('.')[0] + '.json'
           fiche_metier['profil']['profilImage'] = imageName
         }
 
         fs.writeFile(result.filePath, JSON.stringify(fiche_metier), function(err){
           if (err) throw err;
         })
-        // var output = fs.createWriteStream(result.filePath);
-
-        // var archive = archiver('zip', {
-        //   zlib: { level: 9 } 
-        // });
-
-        // archive.pipe(output);
-
-        // // Ampidirina anaty zip lesy le fichier
-        // archive.append(fs.createReadStream(image), { name: imageName});
-        // archive.append(JSON.stringify(fiche_metier), { name: jsonName });
-
-        // // farano amjay lesy e 
-        // archive.finalize();
-
       }
         
     });
 }
 
 
-function viewPdf(url){
-  const win = new PDFWindow({
-    width: 800,
-    height: 600
-  })
-
-  win.loadFile(url)
-
+function viewPdf(pdfFile){
+  const pdf = new BrowserWindow()
+  pdf.loadFile(pdfFile)
 }

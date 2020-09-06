@@ -3,14 +3,12 @@ from docxtpl import DocxTemplate, InlineImage
 from docx2pdf import convert
 
 
-PORT, OLDPORT = 1333, 0
 eel.init('src')
 
 
 @eel.expose
 def generate(data):
-	domaine = data['metier']['domaine']
-
+	domaine = data['metier']['domaine'].strip()
 	context = {
 		'nom' : data['profil']['nom'],
 		'poste' : data['profil']['poste'],
@@ -30,19 +28,19 @@ def generate(data):
 	for i in range(len(data['parcours'])):
 		context[f'p{i}'], context[f'v{i}'] = data['parcours'][i][0], data['parcours'][i][1]
 
-	if data['profil']['profilImage'] != '':
-		doc.replace_pic('test.jpg', data['profil']['profilImage'])
-
-	if domaine in ['Santé', 'informatique', 'commerce et administration']: col = 'bleu'
+	if domaine in ['Santé', 'Informatique', 'Commerce et administration']: col = 'bleu'
 	elif domaine == 'Agronomie': col = 'vert'
-	elif domaine == 'science humaine et communication': col = 'rouge'
-	elif domaine == 'tourisme': col = 'orange'
-	elif domaine == 'industrie et BTP': col = 'violet'
-	elif domaine == 'justice et force de l’ordre': col = 'jaune'
-	else: return  
+	elif domaine == 'Science humaine et Communication': col = 'rouge'
+	elif domaine == 'Tourisme': col = 'orange'
+	elif domaine == 'Industrie et BT': col = 'violet'
+	elif domaine == "Justice et force de l'ordre": col = 'jaune'
+	else: return
 
 	doc = DocxTemplate(f"template/Trame-vierge-{col}.docx")
 
+	
+	if data['profil']['profilImage'] != '':
+		doc.replace_pic('test.jpg', data['profil']['profilImage'])
 
 	doc.render(context)
 	doc.save("tmp/generated_doc.docx")
@@ -53,13 +51,9 @@ def generate(data):
 
  
 def main():
-	global PORT, OLDPORT
-	if os.environ.get('fmsPORT')==str(OLDPORT):
-		PORT += 1
-	OLDPORT = PORT 
+	PORT = 1333
 	os.environ['fmsPORT'] = str(PORT)
-	if sys.platform == 'linux': eel.start(mode="electron", port=PORT)
-	else: eel.start(mode='custom', cmdline_args=['node_modules/electron/dist/electron.exe', '.'], port=PORT)
+	eel.start(mode='custom', cmdline_args=['node_modules/electron/dist/electron.exe', '.'], port=PORT)
 
 
 if __name__ == '__main__':
