@@ -1,10 +1,11 @@
-import os, sys, eel
-from docxtpl import DocxTemplate, InlineImage
+import os, sys, eel, psutil
+from docxtpl import DocxTemplate
 from docx2pdf import convert
+from shutil import copyfile
+
 
 
 eel.init('src')
-
 
 @eel.expose
 def generate(data):
@@ -25,7 +26,9 @@ def generate(data):
 		'insertionProfessionnel' : data['etudes']['insertionProfessionnel']
 	}
 
-	for i in range(len(data['parcours'])):
+	nbp = len(data['parcours'])
+
+	for i in range(nbp):
 		context[f'p{i}'], context[f'v{i}'] = data['parcours'][i][0], data['parcours'][i][1]
 
 	if domaine in ['Santé', 'Informatique', 'Commerce et administration']: col = 'bleu'
@@ -36,11 +39,12 @@ def generate(data):
 	elif domaine == "Justice et force de l'ordre": col = 'jaune'
 	else: return
 
-	doc = DocxTemplate(f"template/Trame-vierge-{col}.docx")
+	doc = DocxTemplate(f"template/Trame-vierge{nbp}-{col}.docx")
 
-	
 	if data['profil']['profilImage'] != '':
+		data['profil']['profilImage'] = forceJPG(data['profil']['profilImage'])
 		doc.replace_pic('test.jpg', data['profil']['profilImage'])
+	
 
 	doc.render(context)
 	doc.save("tmp/generated_doc.docx")
@@ -49,13 +53,29 @@ def generate(data):
 	return 'tmp/generated_doc.pdf'
 
 
+def forceJPG(img):
+	if not img.endswith('.jpg'):
+		filename = img.split('\\')[-1]
+		copyfile(img, f"tmp/{filename}.jpg")
+		return f"tmp/{filename}.jpg"
+	return img
+
+
+def viewPort(port):
+	# Verification d'un PORT
+	for proc in psutil.net_connections():
+		if proc.laddr.port == port: return True
  
+
 def main():
 	PORT = 1333
+	while viewPort(PORT):
+		PORT += 1
 	os.environ['fmsPORT'] = str(PORT)
 	eel.start(mode='custom', cmdline_args=['node_modules/electron/dist/electron.exe', '.'], port=PORT)
 
 
 if __name__ == '__main__':
+	os.system('rd /S /Q tmp')
+	os.system('mkdir tmp')
 	main()
-

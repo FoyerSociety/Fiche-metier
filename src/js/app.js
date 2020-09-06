@@ -3,8 +3,6 @@ const fs = require('fs');
 const path = require('path');
 
 
-
-
 $(".hideDiv").hide();
 fixParcours();
 
@@ -27,28 +25,18 @@ function removeDiv() {
         }
         i++;
     });
-    $(".hideDiv:first").show();
+   /* $(".hideDiv:first").show();*/
+   fixParcours(2)
 };
 
 
-function fixParcours(){
+function fixParcours(lim=3){
   var i = 0;
-  $(".hideDiv:hidden").each(function(){
-    if (i<3) $(this).show();
+  $(".hideDiv").each(function(){
+    if (i<lim) $(this).show();
     i++;
   });
 }
-
-
-
-
-// ipcRenderer.sendSync('synchronous-message', 'sync ping')
-// ipcRenderer.send('asynchronous-message', 'async ping')
-
- // Miandry reponse avy amn Main
-ipcRenderer.on('asynchronous-reply', (event, arg) => {
-   alert(arg);
-})
 
 
 function preview(dataOnly=false){
@@ -90,6 +78,11 @@ function preview(dataOnly=false){
 		var contrainte = metier.find('#contrainte').val();
 		var competence = metier.find('#comptence').val();
 		var domaine = $('.choix').val()
+		if (domaine==''){
+			alert("Le Domaine doit être specifié")
+			$('.butAiza').text('Finir')
+			return 0;
+		}
 
 
 	var etudes = $('#etudes');
