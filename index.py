@@ -1,5 +1,5 @@
 import os, sys, eel
-from docxtpl import DocxTemplate
+from docxtpl import DocxTemplate, InlineImage
 from docx2pdf import convert
 
 
@@ -9,7 +9,7 @@ eel.init('src')
 
 @eel.expose
 def generate(data):
-	doc = DocxTemplate("Trame-vierge.docx")
+	doc = DocxTemplate("template/Trame-vierge.docx")
 
 	context = {
 		'nom' : data['profil']['nom'],
@@ -20,25 +20,32 @@ def generate(data):
 		'accessMetier' : data['metier']['accessMetier'],
 		'aspectPositif' : data['metier']['aspectPositif'],
 		'contrainte' : data['metier']['contrainte'],
+		'domaine' : data['metier']['domaine'],
 
 		'formation' : data['etudes']['formation'],
 		'etablissement' : data['etudes']['etablissement'],
-		'insertionProfessionnel' : data['etudes']['insertionProfessionnel'],
+		'insertionProfessionnel' : data['etudes']['insertionProfessionnel']
 	}
 
+	for i in range(len(data['parcours'])):
+		context[f'p{i}'], context[f'v{i}'] = data['parcours'][i][0], data['parcours'][i][1]
+
+	
+	if data['profil']['profilImage'] != '':
+		doc.replace_pic('test.jpg', data['profil']['profilImage'])
+
+
 	doc.render(context)
-	doc.save("generated_doc.docx")
-	convert("generated_doc.docx")
+	doc.save("tmp/generated_doc.docx")
+	convert("tmp/generated_doc.docx")
 
-	return 'generated_doc.pdf'
-
-
+	return 'tmp/generated_doc.pdf'
 
 
-
+ 
 def main():
 	global PORT, OLDPORT
-	if PORT==OLDPORT or os.environ.get('fmsPORT')==str(OLDPORT):
+	if os.environ.get('fmsPORT')==str(OLDPORT):
 		PORT += 1
 	OLDPORT = PORT 
 	os.environ['fmsPORT'] = str(PORT)

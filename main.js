@@ -3,8 +3,8 @@ const PDFWindow = require('electron-pdf-window')
 const fs = require('fs')
 const path = require('path')
 var fiche_metier = null
-var winP;
-
+var winP
+var PORT = process.env.fmsPORT
 
 function createWindow (win_) {
 
@@ -46,7 +46,7 @@ function createWindow (win_) {
                       if (err) throw err;
                       let textdata = data.toString('utf8')
                       fiche_metier = JSON.parse(JSON.stringify(eval("(" + textdata + ")")));
-                      win.loadURL(`http://localhost:${process.env.fmsPORT}/index.html`)
+                      win.loadURL(`http://localhost:${PORT}/index.html`)
                     });
                    
                   }
@@ -57,7 +57,7 @@ function createWindow (win_) {
             label: "Nouveau",
             click: ()=>{
               fiche_metier = null
-              win.loadURL(`http://localhost:${process.env.fmsPORT}/index.html`)
+              win.loadURL(`http://localhost:${PORT}/index.html`)
             }
           },
           {
@@ -77,13 +77,13 @@ function createWindow (win_) {
 
 
   // mload an le fichier html de demarage
-  win.loadURL(`http://localhost:${process.env.fmsPORT}/index.html`)
+  win.loadURL(`http://localhost:${PORT}/index.html`)
 
   // plein écran
   win.maximize()
 
   // Manokatra DevTools. 
-  // win.webContents.openDevTools() 
+  win.webContents.openDevTools() 
 
   winP = win;
 }

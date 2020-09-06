@@ -20,9 +20,9 @@ function preview(dataOnly=false){
 	    var bio = profil.find('#bio').val();
 	    var pro_image_ = document.getElementById('inputGroupFile01').files[0];
 	    // fix bug path not found when image not selected
-	    if (pro_image_){
+	    /*if (pro_image_){
 			let src = path.join(pro_image_.path);
-			let destDir = path.join(__dirname, 'data');
+			let destDir = path.join('data');
 			verifDir(destDir);
 			var pro_image = copyFile(src, path.join(destDir, `${pro_image_.name}`));
 		} 
@@ -35,7 +35,9 @@ function preview(dataOnly=false){
 				var pro_image = ''
 			}
 			
-		}
+		}*/
+		if (pro_image_) var pro_image = pro_image_.path;
+		else var pro_image = ""
 
 	var parcours = []
 	$(".hideDiv:visible").each(function(){
@@ -47,6 +49,8 @@ function preview(dataOnly=false){
 		var aspPositif = metier.find('#aspect_positif').val();
 		var contrainte = metier.find('#contrainte').val();
 		var competence = metier.find('#comptence').val();
+		var domaine = $('.choix').val()
+
 
 	var etudes = $('#etudes');
 		var formation = etudes.find('#formation').val();
@@ -75,7 +79,7 @@ function preview(dataOnly=false){
 			'aspectPositif' : aspPositif,
 			'contrainte' : contrainte ,
 			'competenceQualite' : competence,
-			'domaine' : ''
+			'domaine' : domaine
 		}
 	}
 
@@ -127,8 +131,6 @@ function _setInput(dataJson){
 	    profil.find('#prenom_pro').val(prenom.join(' '));
 	    var asa = profil.find('#metier').val(dataJson['profil']['poste']);
 	    var bio = profil.find('#bio').val(dataJson['profil']['biographie']);
-	    $('.custom-file-label').val(dataJson['profil']['profilImage'])
-	    $('.custom-file-label').html(dataJson['profil']['profilImage'])
 
 	var parcours = dataJson['parcours']
 	let divParcours = $(".hideDiv")
@@ -144,6 +146,8 @@ function _setInput(dataJson){
 		var aspPositif = metier.find('#aspect_positif').val(dataJson['metier']['aspectPositif']);
 		var contrainte = metier.find('#contrainte').val(dataJson['metier']['contrainte']);
 		var competence = metier.find('#comptence').val(dataJson['metier']['competenceQualite']);
+		$('.choix').val(dataJson['metier']['domaine'])
+
 
 	var etudes = $('#etudes');
 		var formation = etudes.find('#formation').val(dataJson['etudes']['formation']);
@@ -159,13 +163,11 @@ $(function() {
 
 
 function saveData(){
-	let data = preview(true);
+	preview(true);
 	ipcRenderer.sendSync('asynchronous-message', {'status':'save'})
 }
 
 
-
 function viewPdf(data){
-	alert('aty oo')
 	ipcRenderer.sendSync('asynchronous-message', {'status':'viewPdf', 'data': data})
 }

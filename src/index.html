@@ -8,7 +8,7 @@
         <link href="img/logo.png" rel="icon">
         <link href="img/logo.png" rel="apple-touch-icon">
         <link rel="stylesheet" href="dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="dist/css/all.css">
+        <link rel="stylesheet" href="dist/css/all.min.css">
 
         <script> window.jQuery =  window.$ = require('jquery'); </script>
     
@@ -55,7 +55,7 @@
                                         <i class="fas fa-briefcase"></i>
                                     </span> 
                                 </div>
-                                <input type="text" id="metier" class="form-control" placeholder="Nom du métier" aria-label="Username" aria-describedby="basic-addon1">
+                                <input on type="text" id="metier" class="form-control" placeholder="Nom du métier" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="input-group mb-3 enter">
@@ -200,14 +200,14 @@
                         <div class="mb-3">
                             <select class="choix">
                                 <option value=""> Domaine </option>
-                                <option value="vert">Agronomie</option>
-                                <option value="bleu">Santé</option>
-                                <option value="bleu">Informatique</option>
-                                <option value="violet">Industrie et BTP</option>
-                                <option value="rouge">Science humaine et Communication</option>
-                                <option value="orange">Tourisme</option>
-                                <option value="bleu">Commerce et administration</option>
-                                <option value="jaune">Justice et force de l'ordre</option>
+                                <option value="Agronomie">Agronomie</option>
+                                <option value="Santé">Santé</option>
+                                <option value="Informatique">Informatique</option>
+                                <option value="Industrie et BT">Industrie et BTP</option>
+                                <option value="Science humaine et Communication">Science humaine et Communication</option>
+                                <option value="Tourisme">Tourisme</option>
+                                <option value="Commerce et administration">Commerce et administration</option>
+                                <option value="Justice et force de l'ordre">Justice et force de l'ordre</option>
                             </select>
                         </div>
                     </form>
@@ -278,7 +278,10 @@
                 $('.custom-file-label').html(pro_image.name.substring(0,20))
             }
 
-            
+            $('#profil').find('#metier').on('keydown', function() {
+                $(".hideDiv:visible:last").find('input.entercol2B').val($(this).val());
+                console.log('tay')
+            });
 
         </script>
         <script  src="js/index.js"> </script>

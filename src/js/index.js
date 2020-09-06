@@ -1,6 +1,6 @@
 
 $(".hideDiv").hide();
-$(".hideDiv:first").show();
+fixParcours();
 
 function showDiv() {
   var i = 0;
@@ -23,3 +23,14 @@ function removeDiv() {
     });
     $(".hideDiv:first").show();
 };
+
+
+function fixParcours(){
+  var i = 0;
+  $(".hideDiv:hidden").each(function(){
+    if (i<3) $(this).show();
+    i++;
+  });
+}
+
+
