@@ -1,0 +1,29 @@
+h1{
+    text-align: center;
+    padding-top: 2%;
+}
+
+body{
+    background-color: beige;
+}
+
+.body-card{
+    background-color: #4fc9b8;
+    width: 1200px;
+    margin-top: 8%;
+    padding-bottom: 5%;
+    margin-left: 6%;
+    border-radius: 12px;
+
+}
+
+.imgcard{
+    padding-top: 21%;
+    padding-left: 2%;
+}
+
+.cardcol{
+    border-radius: 12px;
+}
+
+
