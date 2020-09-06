@@ -122,7 +122,7 @@ function saveData(){
     save_file.then(result => {
       if (!result.canceled){
         extens = result.filePath.split('.').reverse()[0]
-        if (extens!='fms') result.filePath += ".fms";var output = fs.createWriteStream(result.filePath);
+        if (extens!='fms') result.filePath += ".fms";
 
         // ATAOVY AKATO AMJAY LESY E!
 
