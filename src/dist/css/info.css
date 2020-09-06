@@ -10,7 +10,7 @@ body{
 .body-card{
     background-color: #4fc9b8;
     width: 1200px;
-    margin-top: 8%;
+    margin-top: 7%;
     padding-bottom: 5%;
     margin-left: 6%;
     border-radius: 12px;
@@ -24,6 +24,15 @@ body{
 
 .cardcol{
     border-radius: 12px;
+}
+
+.btnquit{
+    padding-left: 45%;
+    padding-top: 1%;
+}
+
+.ensemble{
+    padding-top: 2%;
 }
 
 
