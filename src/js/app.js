@@ -177,6 +177,3 @@ function viewPdf(data){
 	if (data) ipcRenderer.sendSync('synchronous-message', {'status':'viewPdf', 'data': data});
 	$('.butAiza').text('Finir')
 }
-
-
-

@@ -4,7 +4,6 @@ from docx2pdf import convert
 from shutil import copyfile
 
 
-
 eel.init('src')
 
 @eel.expose

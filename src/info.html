@@ -85,11 +85,14 @@
           </div>
 
           <div class="input-group-prepend btnquit">
-            <button type="button" class="btn btn-secondary btn-col2" id="bouton" onclick="showDiv()">
-                <i class="fas fa-sign-out-alt"></i> Fermer
+            <button type="button" class="btn btn-secondary btn-col2" id="bouton" onclick="window.assign('https://github.com/FoyerSociety')>
+                <i class="fas fa-sign-out-alt"></i> Voir sur GitHub.
             </button>
         </div>
         </div>
-        
+        <script>
+          const {ipcRenderer} = require('electron')
+          ipcRenderer.sendSync('synchronous-message', {'status':'hideF'})
+        </script>
     </body>
 </html>

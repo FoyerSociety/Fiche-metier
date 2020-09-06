@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path')
 var fiche_metier = null
 var winP
+var winF = null
 var PORT = process.env.fmsPORT
 
 function createWindow (win_) {
@@ -84,10 +85,11 @@ function createWindow (win_) {
           {
             label : "Devéloppeurs",
             click : ()=>{
-              let devps = dialog.showMessageBox(win, {
+              cr();
+              /*let devps = dialog.showMessageBox(win, {
                 title : "Les développeurs",
                 message : "F_Society : \n\nAina Juno P18 : Front-end \nGaetan Jonathan P18 : Back-end \nBruollin P18 : Contributeur "
-              })
+              })*/
             }
           }
         ]
@@ -125,10 +127,29 @@ ipcMain.on('synchronous-message', (event, arg) => {
   else if (arg['status'] == 'viewPdf') viewPdf(arg['data']);
   else if (arg['status'] == 'save') saveData();
   else if (arg['status'] == 'set') fiche_metier = arg['data'];
-  
+
   event.returnValue = null
-  
 })
+
+
+function cr(){
+  const win = new BrowserWindow( {
+    resizable : false,
+    movable: false,
+    maximizable : false,
+    minimizable:false,
+    center: true,
+    width: 1280,
+    modal: true,
+    webPreferences: {
+    // manao integration ana nodejs anaty le projet
+      nodeIntegration: true
+    }
+  })
+
+  win.loadURL(`http://localhost:${PORT}/info.html`)
+  win.setMenu(null)
+}
 
 
 app.on('ready', createWindow)
