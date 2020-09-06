@@ -9,7 +9,7 @@ eel.init('src')
 
 @eel.expose
 def generate(data):
-	doc = DocxTemplate("template/Trame-vierge.docx")
+	domaine = data['metier']['domaine']
 
 	context = {
 		'nom' : data['profil']['nom'],
@@ -20,7 +20,7 @@ def generate(data):
 		'accessMetier' : data['metier']['accessMetier'],
 		'aspectPositif' : data['metier']['aspectPositif'],
 		'contrainte' : data['metier']['contrainte'],
-		'domaine' : data['metier']['domaine'],
+		'domaine' : domaine,
 
 		'formation' : data['etudes']['formation'],
 		'etablissement' : data['etudes']['etablissement'],
@@ -30,9 +30,18 @@ def generate(data):
 	for i in range(len(data['parcours'])):
 		context[f'p{i}'], context[f'v{i}'] = data['parcours'][i][0], data['parcours'][i][1]
 
-	
 	if data['profil']['profilImage'] != '':
 		doc.replace_pic('test.jpg', data['profil']['profilImage'])
+
+	if domaine in ['Santé', 'informatique', 'commerce et administration']: col = 'bleu'
+	elif domaine == 'Agronomie': col = 'vert'
+	elif domaine == 'science humaine et communication': col = 'rouge'
+	elif domaine == 'tourisme': col = 'orange'
+	elif domaine == 'industrie et BTP': col = 'violet'
+	elif domaine == 'justice et force de l’ordre': col = 'jaune'
+	else: return  
+
+	doc = DocxTemplate(f"template/Trame-vierge-{col}.docx")
 
 
 	doc.render(context)
