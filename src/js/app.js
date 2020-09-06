@@ -26,7 +26,7 @@ function removeDiv() {
         i++;
     });
    /* $(".hideDiv:first").show();*/
-   fixParcours(2)
+   fixParcours(3)
 };
 
 
