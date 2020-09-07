@@ -83,7 +83,7 @@ function createWindow (win_) {
             }
           },
           {
-            label : "Devéloppeurs",
+            label : "Développeurs",
             click : ()=>{
               cr();
               /*let devps = dialog.showMessageBox(win, {
