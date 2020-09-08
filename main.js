@@ -61,10 +61,6 @@ function createWindow (win_) {
             }
           },
           {
-            label: "Nouvelle Fenetre",
-            click: ()=>{ createWindow() }
-          },
-          {
             label: "Fermer",
             click: ()=>{ app.quit() }
           },
@@ -78,7 +74,7 @@ function createWindow (win_) {
             click : ()=>{
               let apropos = dialog.showMessageBox(win, {
                 title : "A propos du logiciel",
-                message : "Nom du logiciel : FICHE METIER \n\nDescription :\n\nCe logiciel a été conçu pour créer un fiche métier . Et il facilite et uniformise la mise en forme de votre fiche métier."
+                message : "Nom du logiciel : FICHE METIER \n\nDescription :\n  Ce logiciel a été conçu pour créer un fiche métier.\n  Et il facilite et uniformise la mise en forme de votre fiche métier.\n\nVersion: 1.0.0"
               })
             }
           },
@@ -134,6 +130,7 @@ ipcMain.on('synchronous-message', (event, arg) => {
 
 function cr(){
   const win = new BrowserWindow( {
+    parent: winP,
     resizable : false,
     movable: false,
     maximizable : false,
@@ -148,7 +145,7 @@ function cr(){
   })
 
   win.loadURL(`http://localhost:${PORT}/info.html`)
-  win.setMenu(null)
+  win.setMenu(null) 
 }
 
 
@@ -186,6 +183,7 @@ function saveData(){
 
 
 function viewPdf(pdfFile){
-  const pdf = new BrowserWindow()
+  const pdf = new BrowserWindow({parent:winP})
+  pdf.setMenu(null)
   pdf.loadFile(pdfFile)
 }

@@ -1,4 +1,6 @@
-import os, sys, eel, psutil
+import eel
+from os import system, environ
+from psutil import net_connections
 from docxtpl import DocxTemplate
 from docx2pdf import convert
 from shutil import copyfile
@@ -66,7 +68,7 @@ def forceJPG(img):
 
 def viewPort(port):
 	# Verification d'un PORT
-	for proc in psutil.net_connections():
+	for proc in net_connections():
 		if proc.laddr.port == port: return True
  
 
@@ -74,11 +76,11 @@ def main():
 	PORT = 1333
 	while viewPort(PORT):
 		PORT += 1
-	os.environ['fmsPORT'] = str(PORT)
+	environ['fmsPORT'] = str(PORT)
 	eel.start(mode='custom', cmdline_args=['node_modules/electron/dist/electron.exe', '.'], port=PORT)
 
 
 if __name__ == '__main__':
-	os.system('rd /S /Q tmp')
-	os.system('mkdir tmp')
+	system('rd /S /Q tmp')
+	system('mkdir tmp')
 	main()
