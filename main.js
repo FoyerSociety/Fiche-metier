@@ -1,12 +1,12 @@
 const {app, BrowserWindow, Menu, ipcMain, dialog} = require('electron')
 const fs = require('fs')
 const path = require('path')
+const PORT = process.env.fmsPORT
 var fiche_metier = null
 var winP
 var winF = null
-var PORT = process.env.fmsPORT
 
-function createWindow (win_) {
+function createWindow () {
 
   const win = new BrowserWindow({
     width: 1366,
@@ -80,13 +80,7 @@ function createWindow (win_) {
           },
           {
             label : "Développeurs",
-            click : ()=>{
-              cr();
-              /*let devps = dialog.showMessageBox(win, {
-                title : "Les développeurs",
-                message : "F_Society : \n\nAina Juno P18 : Front-end \nGaetan Jonathan P18 : Back-end \nBruollin P18 : Contributeur "
-              })*/
-            }
+            click : ()=>{ cr();}
           }
         ]
       }
@@ -103,7 +97,7 @@ function createWindow (win_) {
   win.maximize()
 
   // Manokatra DevTools. 
-  //win.webContents.openDevTools() 
+  win.webContents.openDevTools() 
 
   winP = win;
 }

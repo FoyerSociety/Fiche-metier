@@ -76,7 +76,7 @@ function preview(dataOnly=false){
 		var access = metier.find('#access_metier').val();
 		var aspPositif = metier.find('#aspect_positif').val();
 		var contrainte = metier.find('#contrainte').val();
-		var competence = metier.find('#comptence').val();
+		var competence = metier.find('#competence').val();
 		var domaine = $('.choix').val()
 		if (domaine==''){
 			alert("Le Domaine doit être specifié")
@@ -150,7 +150,7 @@ function _setInput(dataJson){
 		var access = metier.find('#access_metier').val(dataJson['metier']['accessMetier']);
 		var aspPositif = metier.find('#aspect_positif').val(dataJson['metier']['aspectPositif']);
 		var contrainte = metier.find('#contrainte').val(dataJson['metier']['contrainte']);
-		var competence = metier.find('#comptence').val(dataJson['metier']['competenceQualite']);
+		var competence = metier.find('#competence').val(dataJson['metier']['competenceQualite']);
 		$('.choix').val(dataJson['metier']['domaine'])
 
 
@@ -164,6 +164,112 @@ function _setInput(dataJson){
 $(function() {
 	let data = ipcRenderer.sendSync('synchronous-message', {'status':'get'})
 	if (data) _setInput(data);
+
+    $('#profil').find('#metier').on('keyup', function() {
+        $(".hideDiv:visible:last").find('input.entercol2B').val($(this).val());
+    });
+
+    // NOM LIMITATION
+	    $('#profil').find('#prenom_pro').on('keyup', function(){
+	    	let val = $(this).val()
+	    	let fkVal = $('#profil').find('#nom_pro').val()
+
+	        if (val.length+fkVal.length>62) $(this).val(val.substr(0,val.length-1));
+	    });  
+
+	    $('#profil').find('#nom_pro').on('keyup', function(){
+	    	let val = $(this).val()
+	    	let fkVal = $('#profil').find('#prenom_pro').val()
+
+	        if (val.length+fkVal.length>62) $(this).val(val.substr(0,val.length-1));
+	    });
+
+
+	// POSTE LIMITATION
+		$('#profil').find('#metier').on('keyup', function(){
+	    	let val = $(this).val()
+	        if (val.length>30) $(this).val(val.substr(0,30));
+	    });
+
+	// BIO LIMITATION
+		$('#profil').find('#bio').on('keyup', function(){
+	    	let val = $(this).val()
+	    	//399
+	        if (val.length>496) $(this).val(val.substr(0,496));
+	        console.log(val+ " " + val.length)
+	    });
+
+	// PARCOURS LIMITATION
+	$(".hideDiv").each(function(){
+		//11
+		$(this).find('input.entercol2A').on('keyup', function(){
+			let val0 = $(this).val()
+	        if (val0.length>12) $(this).val(val0.substr(0,12));
+		});
+		//34
+		$(this).find('input.entercol2B').on('keyup', function(){
+			let val1 = $(this).val()
+	        if (val1.length>36) $(this).val(val1.substr(0,36));
+		});	
+	});
+
+	// ACCESS METIER LIMITATION
+	// 28 
+	$('#metier').find('#access_metier').on('keyup', function(){
+		let val = $(this).val()
+	     if (val.length>31) $(this).val(val.substr(0,val.length-1));
+	});
+
+	// ASPECT POSITIF LIMITATION
+	// 72
+	$('#metier').find('#aspect_positif').on('keyup', function(){
+		let val = $(this).val()
+	     if (val.length>78) $(this).val(val.substr(0,val.length-1));
+	});
+
+	// CONTRAINTE LIMITATION
+	// 72
+	$('#metier').find('#contrainte').on('keyup', function(){
+		let val = $(this).val()
+	     if (val.length>78) $(this).val(val.substr(0,78));
+	});
+
+	// COMPETENCE LIMITATION
+	// 185
+	$('#metier').find('#contrainte').on('keyup', function(){
+		let val = $(this).val()
+	     if (val.length>240) $(this).val(val.substr(0,240));
+	});
+
+	// FORMATION LIMITATION
+	$('#metier').find('#contrainte').on('keyup', function(){
+		if ($(".hideDiv:visible").length==5){
+			// 288
+			let val = $(this).val()
+	     	if (val.length>315) $(this).val(val.substr(0,315));
+		} else {
+			// 403
+			let val = $(this).val()
+	     	if (val.length>475) $(this).val(val.substr(0,475));
+		}
+		
+	});
+
+	// INSERTION PROFESSIONNEL LIMITATION
+	// 111
+	$('#metier').find('#_insertPro').on('keyup', function(){
+		let val = $(this).val()
+	     if (val.length>123) $(this).val(val.substr(0,123));
+	});
+
+	// ETABLISSEMENT SUP LIMITATION
+	// 32
+	$('#metier').find('#es').on('keyup', function(){
+		let val = $(this).val()
+	     if (val.length>37) $(this).val(val.substr(0,37));
+	});
+
+
 });
 
 

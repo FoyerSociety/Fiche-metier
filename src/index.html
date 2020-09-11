@@ -194,7 +194,7 @@
                                     <i class="fas fa-book-reader"></i>
                                 </span> 
                             </div>
-                            <textarea id="comptence" class="form-control apropos" aria-label="With textarea" placeholder="Compétences & Qualités : "></textarea>
+                            <textarea id="competence" class="form-control apropos" aria-label="With textarea" placeholder="Compétences & Qualités : "></textarea>
                         </div>
 
                         <div class="mb-3">
@@ -277,11 +277,6 @@
                 var pro_image = document.getElementById('inputGroupFile01').files[0];
                 $('.custom-file-label').html(pro_image.name.substring(0,20))
             }
-
-            $('#profil').find('#metier').on('keydown', function() {
-                $(".hideDiv:visible:last").find('input.entercol2B').val($(this).val());
-            });
-
         </script>
         <script src='js/app.js'></script>
         <script src="/eel.js"></script>
