@@ -17,6 +17,11 @@ def generate(data):
 
 		if nbp==5: flimit = 288
 		else: flimit = 403
+
+		# Try to make a space between aspet&contrainte
+		if len(data['metier']['aspectPositif']) < 45:
+			data['metier']['aspectPositif'] += '\n'
+
 		context = {
 			'nom' : RichText(data['profil']['nom'], font='Arial', bold=True,\
 				size = 22 if len(data['profil']['nom'])>50 else 24),
@@ -70,17 +75,18 @@ def generate(data):
 		else: return
 
 		doc = DocxTemplate(f"template/Trame-vierge{nbp}-{col}.docx")
-		print(context)
 
 		if data['profil']['profilImage'] != '':
 			data['profil']['profilImage'] = forceJPG(data['profil']['profilImage'])
 			doc.replace_pic('test.jpg', data['profil']['profilImage'])
 		
 		doc.render(context)
-		doc.save(f"{gettempdir()}\\generated_doc.docx")
-		convert(f"{gettempdir()}\\generated_doc.docx")
+		name = "FicheMetier_" + data['profil']['poste'].replace(' ', '_')
 
-		return f"{gettempdir()}\\generated_doc.pdf"
+		doc.save(f"{gettempdir()}\\{name}.docx")
+		convert(f"{gettempdir()}\\{name}.docx")
+
+		return f"{gettempdir()}\\{name}.pdf"
 
 	except Exception as err: 
 		print(err)
@@ -90,8 +96,9 @@ def generate(data):
 def forceJPG(img):
 	if not img.endswith('.jpg'):
 		filename = img.split('\\')[-1]
-		copyfile(img, f"{gettempdir()}\\{filename}.jpg")
-		return f"{gettempdir()}\\{filename}.jpg"
+		newIm = f"{gettempdir()}\\{filename}.jpg"
+		copyfile(img, newIm)
+		return newIm
 	return img
 
 
