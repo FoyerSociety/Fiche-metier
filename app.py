@@ -1,5 +1,6 @@
 import eel
-from os import system, environ
+from os import environ
+from tempfile import gettempdir
 from psutil import net_connections
 from docxtpl import DocxTemplate, RichText
 from docx2pdf import convert
@@ -76,10 +77,10 @@ def generate(data):
 			doc.replace_pic('test.jpg', data['profil']['profilImage'])
 		
 		doc.render(context)
-		doc.save("tmp/generated_doc.docx")
-		convert("tmp/generated_doc.docx")
+		doc.save(f"{gettempdir()}\\generated_doc.docx")
+		convert(f"{gettempdir()}\\generated_doc.docx")
 
-		return 'tmp/generated_doc.pdf'
+		return f"{gettempdir()}\\generated_doc.pdf"
 
 	except Exception as err: 
 		print(err)
@@ -89,8 +90,8 @@ def generate(data):
 def forceJPG(img):
 	if not img.endswith('.jpg'):
 		filename = img.split('\\')[-1]
-		copyfile(img, f"tmp/{filename}.jpg")
-		return f"tmp/{filename}.jpg"
+		copyfile(img, f"{gettempdir()}\\{filename}.jpg")
+		return f"{gettempdir()}\\{filename}.jpg"
 	return img
 
 
@@ -109,6 +110,4 @@ def main():
 
 
 if __name__ == '__main__':
-	system('rd /S /Q tmp')
-	system('mkdir tmp')
 	main()

@@ -1,0 +1,4 @@
+eel
+docxtpl
+docx2pdf
+psutil
