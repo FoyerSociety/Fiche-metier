@@ -165,19 +165,20 @@ $(function() {
 	let data = ipcRenderer.sendSync('synchronous-message', {'status':'get'})
 	if (data) _setInput(data);
 
-    $('#profil').find('#metier').on('keyup', function() {
+    $('#profil').find('#metier').on('keypress', function() {
         $(".hideDiv:visible:last").find('input.entercol2B').val($(this).val());
     });
 
     // NOM LIMITATION
-	    $('#profil').find('#prenom_pro').on('keyup', function(){
+    // 50
+	    $('#profil').find('#prenom_pro').on('keypress', function(){
 	    	let val = $(this).val()
 	    	let fkVal = $('#profil').find('#nom_pro').val()
 
-	        if (val.length+fkVal.length>62) $(this).val(val.substr(0,val.length-1));
+	        if (val.length+fkVal.length>55) $(this).val(val.substr(0,val.length-1));
 	    });  
 
-	    $('#profil').find('#nom_pro').on('keyup', function(){
+	    $('#profil').find('#nom_pro').on('keypress', function(){
 	    	let val = $(this).val()
 	    	let fkVal = $('#profil').find('#prenom_pro').val()
 
@@ -186,13 +187,13 @@ $(function() {
 
 
 	// POSTE LIMITATION
-		$('#profil').find('#metier').on('keyup', function(){
+		$('#profil').find('#metier').on('keypress', function(){
 	    	let val = $(this).val()
 	        if (val.length>30) $(this).val(val.substr(0,30));
 	    });
 
 	// BIO LIMITATION
-		$('#profil').find('#bio').on('keyup', function(){
+		$('#profil').find('#bio').on('keypress', function(){
 	    	let val = $(this).val()
 	    	//399
 	        if (val.length>496) $(this).val(val.substr(0,496));
@@ -202,12 +203,12 @@ $(function() {
 	// PARCOURS LIMITATION
 	$(".hideDiv").each(function(){
 		//11
-		$(this).find('input.entercol2A').on('keyup', function(){
+		$(this).find('input.entercol2A').on('keypress', function(){
 			let val0 = $(this).val()
 	        if (val0.length>12) $(this).val(val0.substr(0,12));
 		});
 		//34
-		$(this).find('input.entercol2B').on('keyup', function(){
+		$(this).find('input.entercol2B').on('keypress', function(){
 			let val1 = $(this).val()
 	        if (val1.length>36) $(this).val(val1.substr(0,36));
 		});	
@@ -215,34 +216,35 @@ $(function() {
 
 	// ACCESS METIER LIMITATION
 	// 28 
-	$('#metier').find('#access_metier').on('keyup', function(){
+	$('#_metier').find('#access_metier').on('keypress', function(){
 		let val = $(this).val()
-	     if (val.length>31) $(this).val(val.substr(0,val.length-1));
+	     if (val.length>31) $(this).val(val.substr(0,31));
 	});
 
 	// ASPECT POSITIF LIMITATION
 	// 72
-	$('#metier').find('#aspect_positif').on('keyup', function(){
+	$('#_metier').find('#aspect_positif').on('keypress', function(){
 		let val = $(this).val()
-	     if (val.length>78) $(this).val(val.substr(0,val.length-1));
+	     if (val.length>78) $(this).val(val.substr(0,78));
+	     console.log(val + "  " + val.length)
 	});
 
 	// CONTRAINTE LIMITATION
 	// 72
-	$('#metier').find('#contrainte').on('keyup', function(){
+	$('#_metier').find('#contrainte').on('keypress', function(){
 		let val = $(this).val()
 	     if (val.length>78) $(this).val(val.substr(0,78));
 	});
 
 	// COMPETENCE LIMITATION
 	// 185
-	$('#metier').find('#contrainte').on('keyup', function(){
+	$('#_metier').find('#competence').on('keypress', function(){
 		let val = $(this).val()
 	     if (val.length>240) $(this).val(val.substr(0,240));
 	});
 
 	// FORMATION LIMITATION
-	$('#metier').find('#contrainte').on('keyup', function(){
+	$('#etudes').find('#formation').on('keypress', function(){
 		if ($(".hideDiv:visible").length==5){
 			// 288
 			let val = $(this).val()
@@ -257,14 +259,14 @@ $(function() {
 
 	// INSERTION PROFESSIONNEL LIMITATION
 	// 111
-	$('#metier').find('#_insertPro').on('keyup', function(){
+	$('#etudes').find('#_insertPro').on('keypress', function(){
 		let val = $(this).val()
 	     if (val.length>123) $(this).val(val.substr(0,123));
 	});
 
 	// ETABLISSEMENT SUP LIMITATION
 	// 32
-	$('#metier').find('#es').on('keyup', function(){
+	$('#etudes').find('#es').on('keypress', function(){
 		let val = $(this).val()
 	     if (val.length>37) $(this).val(val.substr(0,37));
 	});
@@ -281,5 +283,6 @@ function saveData(){
 
 function viewPdf(data){
 	if (data) ipcRenderer.sendSync('synchronous-message', {'status':'viewPdf', 'data': data});
-	$('.butAiza').text('Finir')
+	else { alert("Un problème est survenu...")}
+	$('.butAiza').text(' Générer ')
 }

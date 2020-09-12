@@ -1,7 +1,7 @@
 import eel
 from os import system, environ
 from psutil import net_connections
-from docxtpl import DocxTemplate
+from docxtpl import DocxTemplate, RichText
 from docx2pdf import convert
 from shutil import copyfile
 
@@ -12,26 +12,53 @@ eel.init('src')
 def generate(data):
 	try:
 		domaine = data['metier']['domaine'].strip()
-		context = {
-			'nom' : data['profil']['nom'],
-			'poste' : data['profil']['poste'],
-			'biographie' : data['profil']['biographie'],
-
-			'competenceQualite' : data['metier']['competenceQualite'],
-			'accessMetier' : data['metier']['accessMetier'],
-			'aspectPositif' : data['metier']['aspectPositif'],
-			'contrainte' : data['metier']['contrainte'],
-			'domaine' : domaine,
-
-			'formation' : data['etudes']['formation'],
-			'etablissement' : data['etudes']['etablissement'],
-			'insertionProfessionnel' : data['etudes']['insertionProfessionnel']
-		}
-
 		nbp = len(data['parcours'])
 
+		if nbp==5: flimit = 288
+		else: flimit = 403
+		context = {
+			'nom' : RichText(data['profil']['nom'], font='Arial', bold=True,\
+				size = 22 if len(data['profil']['nom'])>50 else 24),
+
+			'poste' : data['profil']['poste'],
+
+			'biographie' : RichText(data['profil']['biographie'], font='Arial', \
+				size = 22 if len(data['profil']['biographie'])>399 else 24),
+
+			'competenceQualite' : RichText(data['metier']['competenceQualite'], font='Arial', color='#000000', \
+				size = 22 if len(data['metier']['competenceQualite'])>185 else 24),
+
+			'accessMetier' : RichText(data['metier']['accessMetier'], font='Arial', color='#000000',\
+				size = 22 if len(data['metier']['accessMetier'])>28 else 24),
+
+			'aspectPositif' : RichText(data['metier']['aspectPositif'], font='Arial', color='#000000',\
+				size = 22 if len(data['metier']['aspectPositif'])>72 else 24),
+
+			'contrainte' : RichText(data['metier']['contrainte'], font='Arial', color='#000000',\
+				size = 22 if len(data['metier']['contrainte'])>72 else 24),
+
+			'domaine' : domaine,
+
+			'formation' : RichText(data['etudes']['formation'], font='Arial', color='#000000',\
+				size = 22 if (len(data['etudes']['formation'])>flimit) else 24),
+
+			'etablissement' : RichText(data['etudes']['etablissement'], font='Arial', color='#000000',\
+				size = 28 if len(data['etudes']['etablissement'])>32 else 32),
+
+			'insertionProfessionnel' : RichText(data['etudes']['insertionProfessionnel'], font='Arial', color='#000000',\
+				size = 22 if len(data['etudes']['insertionProfessionnel'])>111 else 24)
+		}
+
 		for i in range(nbp):
-			context[f'p{i}'], context[f'v{i}'] = data['parcours'][i][0], data['parcours'][i][1]
+			if i == nbp-1: color = '#ffffff'
+			else: color = '#000000'
+
+			context[f'p{i}'] = RichText(data['parcours'][i][0], font='Arial', color=color,\
+				size = 22 if len(data['parcours'][i][0])>11 else 24)
+
+			context[f'v{i}'] = RichText(data['parcours'][i][1], font='Arial', color=color, \
+				size = 22 if len(data['parcours'][i][1])>34 else 24)
+
 
 		if domaine in ['Santé', 'Informatique', 'Commerce et administration']: col = 'bleu'
 		elif domaine == 'Agronomie': col = 'vert'
@@ -42,6 +69,7 @@ def generate(data):
 		else: return
 
 		doc = DocxTemplate(f"template/Trame-vierge{nbp}-{col}.docx")
+		print(context)
 
 		if data['profil']['profilImage'] != '':
 			data['profil']['profilImage'] = forceJPG(data['profil']['profilImage'])
