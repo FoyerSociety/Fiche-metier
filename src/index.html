@@ -280,6 +280,11 @@
         </script>
         <script src='js/app.js'></script>
         <script src="/eel.js"></script>
-        
+        <script src="dist/js/mousetrap.min.js"></script>
+        <script>
+            // evenement d ecoute clavier 
+            Mousetrap.bind('ctrl+s', () => { saveData() });
+            Mousetrap.bind('ctrl+space', () => { preview() })
+        </script>
     </body>
 </html>

@@ -270,8 +270,6 @@ $(function() {
 		let val = $(this).val()
 	     if (val.length>37) $(this).val(val.substr(0,37));
 	});
-
-
 });
 
 

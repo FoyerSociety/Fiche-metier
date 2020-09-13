@@ -74,14 +74,24 @@ function createWindow () {
             click : ()=>{
               let apropos = dialog.showMessageBox(win, {
                 title : "A propos du logiciel",
-                message : "Nom du logiciel : FICHE METIER \n\nDescription :\n  Ce logiciel a été conçu pour créer un fiche métier.\n  Et il facilite et uniformise la mise en forme de votre fiche métier.\n\nVersion: 1.1.0"
+                message : "Nom du logiciel : FICHE METIER \n\nDescription :\n  Ce logiciel a été conçu pour créer un fiche métier.\n  Et il facilite et uniformise la mise en forme de votre fiche métier.\n\nVersion: 1.1.1"
               })
             }
           },
           {
             label : "Développeurs",
             click : ()=>{ cr();}
+          },
+          {
+            label : "Raccourci Clavier",
+            click : ()=>{ 
+              let apropos = dialog.showMessageBox(win, {
+                title : "Les Raccourcis du clavier",
+                message : "Ctrl + s : Enregistrer\nCtrl + espace : Générer"
+              });
+            }
           }
+
         ]
       }
     ]
@@ -97,7 +107,7 @@ function createWindow () {
   win.maximize()
 
   // Manokatra DevTools. 
-  // win.webContents.openDevTools() 
+  //win.webContents.openDevTools() 
 
   winP = win;
 }

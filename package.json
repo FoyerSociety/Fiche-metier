@@ -1,11 +1,11 @@
 {
   "name": "fiche-metier",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "fiche",
   "main": "main.js",
   "scripts": {
     "test": "electron main.js",
-    "run": "npm run"
+    "run": "python app.py"
   },
   "repository": {
     "type": "git",
