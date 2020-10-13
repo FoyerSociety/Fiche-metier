@@ -76,7 +76,7 @@
                                         <i class="fas fa-comment-alt"></i>
                                     </span> 
                                 </div>
-                                <textarea id="bio" class="form-control apropos" aria-label="With textarea" placeholder="A propos du professionnel"></textarea>
+                                <textarea id="bio" class="form-control apropos" aria-label="With textarea" placeholder="Apropos du professionnel" title="Témoignage et explication de son rôle : A quoi consiste le travail et qu'est ce qui le spécifie"></textarea>
                             </div>
                         </form>
                     </div>   
@@ -93,8 +93,8 @@
                                         <i class="fas fa-graduation-cap"></i>
                                     </span> 
                                 </div>
-                                <input type="text" class="form-control entercol2A"  placeholder="Bacc ..." aria-label="diplome" aria-describedby="basic-addon1">
-                                <input type="text" class="form-control entercol2B" aria-label="diplome" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control entercol2A"  placeholder="Diplôme ..." title="Diplôme d'accès" aria-label="diplome" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control entercol2B" placeholder="Condition ..." title="Condition d'admission" aria-label="diplome" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group mb-4 enter hideDiv" id="inputVal2">
                                 <div class="input-group-prepend">
@@ -102,8 +102,8 @@
                                         <i class="fas fa-graduation-cap"></i>
                                     </span> 
                                 </div>
-                                <input type="text" class="form-control entercol2A"  placeholder="Bacc + ..." aria-label="diplome" aria-describedby="basic-addon1">
-                                <input type="text" class="form-control entercol2B"  aria-label="diplome" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control entercol2A"  placeholder="Etape 1" aria-label="diplome" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control entercol2B"  placeholder="Diplôme ..." title="Diplôme équivalent" aria-label="diplome" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group mb-4 enter hideDiv" id="inputVal3">
                                 <div class="input-group-prepend">
@@ -111,8 +111,8 @@
                                         <i class="fas fa-graduation-cap"></i>
                                     </span> 
                                 </div>
-                                <input type="text" class="form-control entercol2A"  placeholder="Bacc + ..." aria-label="diplome" aria-describedby="basic-addon1">
-                                <input type="text" class="form-control entercol2B"   aria-label="diplome" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control entercol2A"  placeholder="" title="La compétence équivalente à l'acuisiton du poste" aria-label="diplome" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control entercol2B"  placeholder="Le métier" aria-label="diplome" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group mb-4 enter hideDiv" id="inputVal4">
                                 <div class="input-group-prepend">
@@ -167,7 +167,7 @@
                                     <i class="fas fa-door-open"></i>
                                 </span> 
                             </div>
-                            <textarea id="access_metier" class="form-control acces" aria-label="With textarea" placeholder="Accès : "></textarea>
+                            <textarea id="access_metier" class="form-control acces" title="le premier diplôme exigé pour accéder aux métier, les conditions d'amdission dans les établissements supérieurs" aria-label="With textarea" placeholder="Accès : "></textarea>
                         </div>
 
                         <div class="input-group mb-3 enter">
@@ -176,16 +176,16 @@
                                     <i class="fas fa-brain"></i>
                                 </span> 
                             </div>
-                            <textarea id="aspect_positif" class="form-control acces" aria-label="With textarea" placeholder="Aspects positifs : "></textarea>
+                            <textarea id="aspect_positif" class="form-control acces" aria-label="With textarea" placeholder="Aspects positifs : " title="les avantages que l'on peur bénéficier dans l'accomplissement du métier."></textarea>
                         </div>
 
-                        <div class="input-group mb-3 enter">
+                        <div class="input-group mb-3 enter" title="TESTE">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <i class="fas fa-angry"></i>
                                 </span> 
                             </div>
-                            <textarea id="contrainte" class="form-control acces" aria-label="With textarea" placeholder="Contraintes : "></textarea>
+                            <textarea id="contrainte" class="form-control acces" aria-label="With textarea"  placeholder="Contraintes :" title=" tout ce qui peut entraver à la liberté de bien travailler."></textarea>
                         </div>
 
                         <div class="input-group mb-3 enter">
@@ -194,7 +194,7 @@
                                     <i class="fas fa-book-reader"></i>
                                 </span> 
                             </div>
-                            <textarea id="competence" class="form-control apropos" aria-label="With textarea" placeholder="Compétences & Qualités : "></textarea>
+                            <textarea id="competence" class="form-control apropos" aria-label="With textarea" placeholder="Compétences & Qualités : " title="l'ensemble ds savoir, savoir-faire et savoir-être qui sont indispensables pour bien accomplir son rôles."></textarea>
                         </div>
 
                         <div class="mb-3">
@@ -208,6 +208,7 @@
                                 <option value="Tourisme">Tourisme</option>
                                 <option value="Commerce et administration">Commerce et administration</option>
                                 <option value="Justice et force de l'ordre">Justice et force de l'ordre</option>
+                                <option value="Autres">Autres (à preciser)</option>
                             </select>
                         </div>
                     </form>
@@ -229,7 +230,7 @@
                                             <i class="fas fa-bookmark"></i>
                                         </span> 
                                     </div>
-                                    <textarea id="formation" class="form-control apropos" aria-label="With textarea" placeholder="Formations : "></textarea>
+                                    <textarea id="formation" class="form-control apropos" aria-label="With textarea" placeholder="Formations : " title="Quel domaine de formation doit-on choisir? Quelles spécialités faut-il choisir? Quels sont les matières à apprendre dans le cursus de formation?"></textarea>
                                 </div>
 
                                 <div class="input-group mb-3 enter">
@@ -238,7 +239,7 @@
                                             <i class="fas fa-briefcase"></i>
                                         </span> 
                                     </div>
-                                    <textarea id="_insertPro" class="form-control apropos" aria-label="With textarea" placeholder="Insertion professionnel : "></textarea>
+                                    <textarea id="_insertPro" class="form-control apropos" aria-label="With textarea" placeholder="Insertion professionnel : " title="la place du métier dans le marché du travail. Le débouché du metier, est-il un métier porteur ou métier d'avenir."></textarea>
                                 </div>
 
                                 <div class="input-group mb-3 enter ">
