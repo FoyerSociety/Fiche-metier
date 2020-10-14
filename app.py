@@ -114,17 +114,24 @@ def getAllcolor():
 
 @eel.expose
 def addDomaine(dom, col):
-	with open("_domaine.json", "a") as fdom:
-		try:
-			jDom = load(fdom)
-		except:
-			jdom = {"new_domaine": {dom: col}}
-		else: 
-			if jDom.get("new_domaine"):
-				jDom["new_domaine"][dom] = col
-			else: jdom = {"new_domaine": {dom: col}}
-		finally:
-			dump(jdom, fdom)
+	fdom = open("_domaine.json", "r")
+	try:
+		jDom = load(fdom)
+	except Exception as err:
+		print(err)
+		fdom.close()
+		fdom = open("_domaine.json", "w")
+		jDom = {"new_domaine": {dom: col}}
+	else:
+		fdom.close()
+		fdom = open("_domaine.json", "w")
+		if jDom.get("new_domaine"):
+			print("ato ve?")
+			jDom["new_domaine"][dom] = col
+		else: jDom = {"new_domaine": {dom: col}}
+	finally:
+		dump(jDom, fdom)
+	fdom.close()
 	return True
 
 

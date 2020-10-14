@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="row form-group">
-		<input type="button" onclick="addDomaine()" class="col text-center btn btn-primary" value="Enregistrer"/>
+		<input type="button" style="border-radius: 12px !important;" onclick="addDomaine()" class="col text-center btn btn-primary" value="Enregistrer"/>
 	</div>
 </form>
 <script src="/eel.js"></script>
@@ -48,7 +48,7 @@
 
 	function success(data){
 		if (data)
-			alert("Domaine Ajouter avec Succes\n Elle sera ajouter au prochain lancement.");
+			alert("Domaine ajouté avec succes.\nElle sera visible au prochain lancement.");
 		else 
 			alert("Une erreur s'est produite...")
 	}
