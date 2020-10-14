@@ -1,10 +1,9 @@
 <!Doctype html>
 <head>
+	<title>Nouveau domaine</title>
 	<script> window.jQuery =  window.$ = require('jquery'); </script>
 	<link rel="stylesheet" href="dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="dist/css/bootstrap-select.min.css">
 	<script src="dist/js/bootstrap.min.js"></script>
-	<script src="dist/js/bootstrap-select.min.js"></script>
 </head>
 <body>
 <br/>
@@ -14,14 +13,14 @@
 	</div>
 		
 	<div class="form-group">
-		<input id="dom" type="text" placeholder="Nouveau domaine" class="form-control"/>
+		<input id="dom" type="text" placeholder="Nouveau domaine" class="form-control enter" style=".enter:hover" />
 	</div>
 
 	<div id="forms" class="form-group">
 	</div>
 
 	<div class="row form-group">
-		<input type="button" style="border-radius: 12px !important;" onclick="addDomaine()" class="col text-center btn btn-primary" value="Enregistrer"/>
+		<input type="button" style="border-radius: 12px !important; width: 30% !important; margin-left: 35%;" onclick="addDomaine()" class="text-center btn btn-secondary btn-success" value="Enregistrer"/>
 	</div>
 </form>
 <script src="/eel.js"></script>
@@ -32,7 +31,7 @@
 			select += `<option>${data[i]}</option>`;
 		}
 		$("#forms").append(
-			`<select id="col" class="mdb-select md-form form-control dropdown-primary">
+			`<select id="col" class="mdb-select md-form form-control selectpicker">
 			  	${select}
 			</select>`
 		);
@@ -43,7 +42,11 @@
 	});
 
 	function addDomaine(){
-		eel.addDomaine($('#dom').val(), $('#col').val())(success);
+		let dom = $('#dom').val();
+		let col = $('#col').val();
+		if ( (dom.trim() != "") && (col != null) )
+			eel.addDomaine(dom, col)(success);
+		else alert("Veuillez remplir le formulaire...")
 	}
 
 	function success(data){

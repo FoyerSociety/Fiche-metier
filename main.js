@@ -98,7 +98,7 @@ function createWindow () {
         label : "Options",
         submenu : [
           {
-            label : "Ajouter un nouveau Domaine",
+            label : "Nouveau domaine",
             click : ()=>{
               addDomWindow();
             }

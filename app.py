@@ -114,19 +114,21 @@ def getAllcolor():
 
 @eel.expose
 def addDomaine(dom, col):
-	fdom = open("_domaine.json", "r")
 	try:
+		# ouvre le fichier de domaine personalisé
+		fdom = open("_domaine.json", "r")
+		# charger les configurations
 		jDom = load(fdom)
 	except Exception as err:
 		print(err)
-		fdom.close()
+		# On crée un nouveau apres erreur
 		fdom = open("_domaine.json", "w")
 		jDom = {"new_domaine": {dom: col}}
 	else:
 		fdom.close()
 		fdom = open("_domaine.json", "w")
 		if jDom.get("new_domaine"):
-			print("ato ve?")
+			# on ajoute dans l'existante 
 			jDom["new_domaine"][dom] = col
 		else: jDom = {"new_domaine": {dom: col}}
 	finally:
