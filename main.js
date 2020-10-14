@@ -93,6 +93,17 @@ function createWindow () {
           }
 
         ]
+      },
+      {
+        label : "Options",
+        submenu : [
+          {
+            label : "Ajouter un nouveau Domaine",
+            click : ()=>{
+              addDomWindow();
+            }
+          }
+        ]
       }
     ]
   );
@@ -131,28 +142,6 @@ ipcMain.on('synchronous-message', (event, arg) => {
   event.returnValue = null
 })
 
-
-function cr(){
-  const win = new BrowserWindow( {
-    parent: winP,
-    resizable : false,
-    movable: false,
-    maximizable : false,
-    minimizable:false,
-    center: true,
-    width: 1280,
-    modal: true,
-    webPreferences: {
-    // manao integration ana nodejs anaty le projet
-      nodeIntegration: true
-    }
-  })
-
-  win.loadURL(`http://localhost:${PORT}/info.html`)
-  win.setMenu(null) 
-}
-
-
 app.on('ready', createWindow)
 
 
@@ -186,8 +175,51 @@ function saveData(){
 }
 
 
+function cr(){
+  const win = new BrowserWindow( {
+    parent: winP,
+    resizable : false,
+    movable: false,
+    maximizable : false,
+    minimizable:false,
+    center: true,
+    width: 1280,
+    modal: true,
+    webPreferences: {
+    // manao integration ana nodejs anaty le projet
+      nodeIntegration: true
+    }
+  })
+
+  win.loadURL(`http://localhost:${PORT}/info.html`)
+  win.setMenu(null) 
+}
+
+
 function viewPdf(pdfFile){
   const pdf = new BrowserWindow({parent:winP})
   pdf.setMenu(null)
   pdf.loadFile(pdfFile)
+}
+
+
+function addDomWindow(){
+  const win = new BrowserWindow( {
+    parent: winP,
+    resizable : false,
+    movable: false,
+    maximizable : false,
+    minimizable:false,
+    center: true,
+    width: 600,
+    height: 300,
+    modal: true,
+    webPreferences: {
+    // manao integration ana nodejs anaty le projet
+      nodeIntegration: true
+    }
+  });
+
+  win.loadURL(`http://localhost:${PORT}/domaine.html`)
+  win.setMenu(null)
 }

@@ -162,6 +162,8 @@ function _setInput(dataJson){
 
 
 $(function() {
+	eel.getAllDomaine()(setDomaine);
+
 	let data = ipcRenderer.sendSync('synchronous-message', {'status':'get'})
 	if (data) _setInput(data);
 
@@ -283,4 +285,20 @@ function viewPdf(data){
 	if (data) ipcRenderer.sendSync('synchronous-message', {'status':'viewPdf', 'data': data});
 	else { alert("Un problème est survenu...")}
 	$('.butAiza').text(' Générer ')
+}
+
+
+function setDomaine(data){
+	var select = '';
+	for (let i=0; i<data.length;i++){
+		select += `<option>${data[i]}</option>`;
+	}
+	$("#domaine_choix").html(
+		`
+			<select class="choix">
+                <option value=""> Domaine </option>
+                ${select}           
+             </select>
+		`
+	)
 }
