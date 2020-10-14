@@ -1,11 +1,12 @@
 import eel
-from os import environ
+from os import environ, path, listdir
 from tempfile import gettempdir
 from psutil import net_connections
 from docxtpl import DocxTemplate, RichText
 from docx2pdf import convert
 from shutil import copyfile
-
+from json import load, dump
+from re import match
 
 eel.init('src')
 
@@ -66,24 +67,30 @@ def generate(data):
 				size = 22 if len(data['parcours'][i][1])>34 else 24)
 
 
-		if domaine in ['Santé', 'Informatique', 'Commerce et administration']: col = 'bleu'
-		elif domaine == 'Agronomie': col = 'vert'
-		elif domaine == 'Science humaine et Communication': col = 'rouge'
-		elif domaine == 'Tourisme': col = 'orange'
-		elif domaine == 'Industrie et BT': col = 'violet'
-		elif domaine == "Justice et force de l'ordre": col = 'jaune'
-		else: return
+		col = None
+		for kdom, vdom in verifJSON().items():
+			if kdom == domaine:
+				col = vdom
+				break
+		# Si aucune correspondance
+		if not col: return
 
+		# Get the template
 		doc = DocxTemplate(f"template/Trame-vierge{nbp}-{col}.docx")
 
+		# Change image on template if image set
 		if data['profil']['profilImage'] != '':
 			data['profil']['profilImage'] = forceJPG(data['profil']['profilImage'])
 			doc.replace_pic('test.jpg', data['profil']['profilImage'])
 		
+		# Generate template
 		doc.render(context)
 		name = "FicheMetier_" + data['profil']['poste'].replace(' ', '_')
 
+		# Save the doc generated
 		doc.save(f"{gettempdir()}\\{name}.docx")
+
+		# Convert to pdf 
 		convert(f"{gettempdir()}\\{name}.docx")
 
 		return f"{gettempdir()}\\{name}.pdf"
@@ -91,6 +98,48 @@ def generate(data):
 	except Exception as err: 
 		print(err)
 		return 
+
+@eel.expose
+def getAllcolor():
+	allcolor = []
+	if path.isdir("template"):
+		tempNames = listdir("template/")
+		for templ in tempNames:
+			if match(r'^Trame-vierge[3-5]{1}-[a-zA-Z_]{1,}.docx$', templ):
+				# decomposer pour avoir que la couleur
+				allcolor.append(templ.split("-")[-1].split(".")[0])
+	# suppression de doublons
+	return list(set(allcolor))
+
+
+@eel.expose
+def addDomaine(dom, col):
+	try:
+		# ouvre le fichier de domaine personalisé
+		fdom = open("_domaine.json", "r")
+		# charger les configurations
+		jDom = load(fdom)
+	except Exception as err:
+		print(err)
+		# On crée un nouveau apres erreur
+		fdom = open("_domaine.json", "w")
+		jDom = {"new_domaine": {dom: col}}
+	else:
+		fdom.close()
+		fdom = open("_domaine.json", "w")
+		if jDom.get("new_domaine"):
+			# on ajoute dans l'existante 
+			jDom["new_domaine"][dom] = col
+		else: jDom = {"new_domaine": {dom: col}}
+	finally:
+		dump(jDom, fdom)
+	fdom.close()
+	return True
+
+
+@eel.expose()
+def getAllDomaine():
+	return list(verifJSON().keys())
 
 
 def forceJPG(img):
@@ -100,6 +149,29 @@ def forceJPG(img):
 		copyfile(img, newIm)
 		return newIm
 	return img
+
+
+def verifJSON():
+	domaine = {
+		'Santé' : 'bleu',
+		'Informatique' : 'bleu',
+		'Commerce et administration': 'bleu',
+		'Agronomie' : 'vert',
+		'Science humaine et Communication' : 'rouge',
+		'Tourisme' : 'orange',
+		'Industrie et BT' : 'violet',
+		"Justice et force de l'ordre" : 'jaune'
+	}
+
+	if path.isfile("_domaine.json"):
+		with open("_domaine.json", 'r', encoding='Utf-8') as fDom:
+			try:
+				jDom = load(fDom)
+				if jDom.get('new_domaine'):
+					for k,v in jDom.get('new_domaine').items():
+						domaine[k] = v
+			except Exception as err: print(err)
+	return domaine
 
 
 def viewPort(port):

@@ -5,6 +5,7 @@ const path = require('path');
 
 $(".hideDiv").hide();
 fixParcours();
+ajustName()
 
 function showDiv() {
   var i = 0;
@@ -14,6 +15,7 @@ function showDiv() {
   }
   i++;
   });
+  ajustName()
 };
 
 function removeDiv() {
@@ -27,6 +29,7 @@ function removeDiv() {
     });
    /* $(".hideDiv:first").show();*/
    fixParcours(3)
+   ajustName()
 };
 
 
@@ -38,6 +41,36 @@ function fixParcours(lim=3){
   });
 }
 
+
+function ajustName(){
+	var i = 0;
+	var elInput = $(".hideDiv:visible");
+	elInput.each(function(){
+		if (i == 0){
+			$(this).find('input.entercol2A').attr('placeholder', 'Diplôme ...');
+			$(this).find('input.entercol2A').attr('title', "Diplôme d'accès");
+
+			$(this).find('input.entercol2B').attr('placeholder', 'Condition ...');
+			$(this).find('input.entercol2B').attr('title', "Condition d'admission");
+		} 
+        else if (i==elInput.length-1){
+         	$(this).find('input.entercol2A').attr('placeholder', '');
+			$(this).find('input.entercol2A').attr('title', "La compétence équivalente à l'acquisiton du poste");
+
+			$(this).find('input.entercol2B').attr('placeholder', 'Le métier');
+			$(this).find('input.entercol2B').removeAttr("title")
+		}
+		else{
+			$(this).find('input.entercol2A').attr('placeholder', `Etape ${i}`);
+			$(this).find('input.entercol2A').removeAttr("title");
+
+			$(this).find('input.entercol2B').attr('placeholder', 'Diplôme ...');
+			$(this).find('input.entercol2B').attr('title', "Diplôme équivalent");
+		}
+        i++;
+    });
+
+}
 
 function preview(dataOnly=false){
 	// RECUPERATION DES DONNEES D INPUT
@@ -162,6 +195,8 @@ function _setInput(dataJson){
 
 
 $(function() {
+	eel.getAllDomaine()(setDomaine);
+
 	let data = ipcRenderer.sendSync('synchronous-message', {'status':'get'})
 	if (data) _setInput(data);
 
@@ -283,4 +318,20 @@ function viewPdf(data){
 	if (data) ipcRenderer.sendSync('synchronous-message', {'status':'viewPdf', 'data': data});
 	else { alert("Un problème est survenu...")}
 	$('.butAiza').text(' Générer ')
+}
+
+
+function setDomaine(data){
+	var select = '';
+	for (let i=0; i<data.length;i++){
+		select += `<option>${data[i]}</option>`;
+	}
+	$("#domaine_choix").html(
+		`
+			<select class="choix">
+                <option value=""> Domaine </option>
+                ${select}           
+             </select>
+		`
+	)
 }

@@ -1,0 +1,61 @@
+<!Doctype html>
+<head>
+	<title>Nouveau domaine</title>
+	<script> window.jQuery =  window.$ = require('jquery'); </script>
+	<link rel="stylesheet" href="dist/css/bootstrap.min.css">
+	<script src="dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<br/>
+<form class="container center_div" style="width:75%; margin: auto";>
+	<div clas="form-group">
+		<h3 class="text-center" style="font-size: 24px;"> Ajouter Domaine </h3>
+	</div>
+		
+	<div class="form-group">
+		<input id="dom" type="text" placeholder="Nouveau domaine" class="form-control enter" style=".enter:hover" />
+	</div>
+
+	<div id="forms" class="form-group">
+	</div>
+
+	<div class="row form-group">
+		<input type="button" style="border-radius: 12px !important; width: 30% !important; margin-left: 35%;" onclick="addDomaine()" class="text-center btn btn-secondary btn-success" value="Enregistrer"/>
+	</div>
+</form>
+<script src="/eel.js"></script>
+<script>
+	function setcolor(data){
+		var select = '<option style="margin-top: 15px !important;" value="" disabled selected>Choisir une couleur</option>';
+		for (let i=0; i<data.length;i++){
+			select += `<option>${data[i]}</option>`;
+		}
+		$("#forms").append(
+			`<select id="col" class="mdb-select md-form form-control selectpicker">
+			  	${select}
+			</select>`
+		);
+	}
+
+	$(function(){
+		eel.getAllcolor()(setcolor);
+	});
+
+	function addDomaine(){
+		let dom = $('#dom').val();
+		let col = $('#col').val();
+		if ( (dom.trim() != "") && (col != null) )
+			eel.addDomaine(dom, col)(success);
+		else alert("Veuillez remplir le formulaire...")
+	}
+
+	function success(data){
+		if (data)
+			alert("Domaine ajouté avec succes.\nElle sera visible au prochain lancement.");
+		else 
+			alert("Une erreur s'est produite...")
+	}
+</script>
+
+</body>
+<html>
