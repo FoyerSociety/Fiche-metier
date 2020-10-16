@@ -36,7 +36,7 @@ def generate(data):
 				size = 22 if len(data['metier']['competenceQualite'])>185 else 24),
 
 			'accessMetier' : RichText(data['metier']['accessMetier'], font='Arial', color='#000000',\
-				size = 22 if len(data['metier']['accessMetier'])>28 else 24),
+				size = 22 if len(data['metier']['accessMetier'])>160 else 24),
 
 			'aspectPositif' : RichText(data['metier']['aspectPositif'], font='Arial', color='#000000',\
 				size = 22 if len(data['metier']['aspectPositif'])>72 else 24),

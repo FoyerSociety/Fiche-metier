@@ -250,10 +250,10 @@ $(function() {
 	});
 
 	// ACCESS METIER LIMITATION
-	// 28 
+	// 160
 	$('#_metier').find('#access_metier').on('keypress', function(){
 		let val = $(this).val()
-	     if (val.length>31) $(this).val(val.substr(0,31));
+	     if (val.length>250) $(this).val(val.substr(0,250));
 	});
 
 	// ASPECT POSITIF LIMITATION
