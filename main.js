@@ -66,6 +66,19 @@ function createWindow () {
           },
         ]
       },
+
+      {
+        label : "Options",
+        submenu : [
+          {
+            label : "Nouveau domaine",
+            click : ()=>{
+              addDomWindow();
+            }
+          }
+        ]
+      },
+      
       {
         label : "A propos",
         submenu :[
@@ -94,17 +107,7 @@ function createWindow () {
 
         ]
       },
-      {
-        label : "Options",
-        submenu : [
-          {
-            label : "Nouveau domaine",
-            click : ()=>{
-              addDomWindow();
-            }
-          }
-        ]
-      }
+      
     ]
   );
 
