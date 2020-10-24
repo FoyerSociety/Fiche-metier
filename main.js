@@ -87,7 +87,7 @@ function createWindow () {
             click : ()=>{
               let apropos = dialog.showMessageBox(win, {
                 title : "A propos du logiciel",
-                message : "Nom du logiciel : FICHE METIER \n\nDescription :\n  Ce logiciel a été conçu pour créer un fiche métier.\n  Et il facilite et uniformise la mise en forme de votre fiche métier.\n\nVersion: 1.1.1"
+                message : "Nom du logiciel : FICHE METIER \n\nDescription :\n  Ce logiciel a été conçu pour créer un fiche métier.\n  Et il facilite et uniformise la mise en forme de votre fiche métier.\n\nVersion: 2.0.0"
               })
             }
           },
