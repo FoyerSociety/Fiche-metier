@@ -1,6 +1,7 @@
 const {ipcRenderer} = require('electron')
 const fs = require('fs');
 const path = require('path');
+domaine = null;
 
 
 $(".hideDiv").hide();
@@ -159,6 +160,7 @@ function preview(dataOnly=false){
 
 
 function _setInput(dataJson){
+	domaine = dataJson['metier']['domaine']
 	// RECUPERATION DES DONNEES D INPUT
     var profil = $('#profil');
     	let anarana = dataJson['profil']['nom'].split(' ')
@@ -184,13 +186,15 @@ function _setInput(dataJson){
 		var aspPositif = metier.find('#aspect_positif').val(dataJson['metier']['aspectPositif']);
 		var contrainte = metier.find('#contrainte').val(dataJson['metier']['contrainte']);
 		var competence = metier.find('#competence').val(dataJson['metier']['competenceQualite']);
-		$('.choix').val(dataJson['metier']['domaine'])
+		
 
 
 	var etudes = $('#etudes');
 		var formation = etudes.find('#formation').val(dataJson['etudes']['formation']);
 		var insertionPro = etudes.find('#_insertPro').val(dataJson['etudes']['insertionProfessionnel']);
 		var es = etudes.find('#es').val(dataJson['etudes']['etablissement']);
+
+
 }
 
 
@@ -324,7 +328,8 @@ function viewPdf(data){
 function setDomaine(data){
 	var select = '';
 	for (let i=0; i<data.length;i++){
-		select += `<option>${data[i]}</option>`;
+		if (domaine == data[i]) select += `<option selected>${data[i]}</option>`;
+		else select += `<option>${data[i]}</option>`;
 	}
 	$("#domaine_choix").html(
 		`
