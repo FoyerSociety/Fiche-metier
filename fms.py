@@ -63,7 +63,7 @@ def generate(data):
 			context[f'p{i}'] = RichText(data['parcours'][i][0], font='Arial', color=color,\
 				size = 22 if len(data['parcours'][i][0])>11 else 24)
 
-			context[f'v{i}'] = RichText(data['parcours'][i][1], font='Arial', color=color, \
+			context[f'v{i}'] = RichText(data[ 'parcours'][i][1], font='Arial', color=color, \
 				size = 22 if len(data['parcours'][i][1])>34 else 24)
 
 
