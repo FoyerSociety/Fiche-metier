@@ -7,7 +7,8 @@ Desktop Application
 [![Github All Releases](https://img.shields.io/github/downloads/FoyerSociety/Fiche-metier/total.svg)](https://github.com/FoyerSociety/Fiche-metier/releases/download/v2.0.0/FicheMetier.exe)
 
          
-         Ce logiciel a été conçu pour créer un fiche métier. Et il facilite et uniformise la mise en forme de vos fiches métier.
+       Ce logiciel a été conçu pour créer un fiche métier. 
+       Et il facilite et uniformise la mise en forme de vos fiches métier.
 
 
 <img src="https://github.com/FoyerSociety/Fiche-metier/blob/master/preview/1.PNG">
