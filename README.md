@@ -3,7 +3,8 @@ Desktop Application
 
 [![Windows](https://img.shields.io/badge/Windows-yes-red.svg)](#README)
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](#README)
-[![Version](https://img.shields.io/badge/Version-2.0.0-teal)](github.com/FoyerSociety/GestionFoyer/releases)
+[![Version](https://img.shields.io/badge/Version-2.0.0-teal)](https://github.com/FoyerSociety/Fiche-metier/releases)
+[![Github All Releases](https://img.shields.io/github/downloads/FoyerSociety/Fiche-metier/total.svg)](https://github.com/FoyerSociety/Fiche-metier/releases/download/v2.0.0/FicheMetier.exe)
 
          
          Ce logiciel a été conçu pour créer un fiche métier. Et il facilite et uniformise la mise en forme de vos fiches métier.
